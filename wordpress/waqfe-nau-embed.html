@@ -236,11 +236,61 @@ var Q={
 it:[['Quale età conta per scegliere il modulo?',['L\'età al giorno dell\'Ijtema','L\'età compiuta al 1° settembre 2026','L\'età al 1° gennaio'],1],['Un bambino nato il 15 ottobre 2016 quale modulo guarda?',['9 anni','10 anni','11 anni'],0],['Quanti punti vale la parte A (Nisab di quest\'anno)?',['50','70','25'],1],['Qual è il giudizio per 78 punti?',['Mumtaz','Molto buono','Buono'],1],['Da che età c\'è la presentazione sul libro «Messaggio di Pace»?',['Da 9 anni','Da 11 anni','Da 13 anni'],2],['Entro quando si invia il messaggio vocale con il compito?',['Domenica sera','Venerdì mattina','Mercoledì sera'],0]],
 en:[['Which age counts when choosing the form?',['The age on Ijtema day','The age completed on 1 September 2026','The age on 1 January'],1],['A child born on 15 October 2016: which form?',['9 years','10 years','11 years'],0],['How many points is part A (this year\'s Nisab) worth?',['50','70','25'],1],['What is the grade for 78 points?',['Mumtaz','Very good','Good'],1],['From what age is there a presentation on «Messaggio di Pace»?',['From 9','From 11','From 13'],2],['By when is the homework voice note sent?',['Sunday evening','Friday morning','Wednesday evening'],0]],
 ur:[['فارم منتخب کرتے وقت کون سی عمر شمار ہوتی ہے؟',['اجتماع کے دن کی عمر','یکم ستمبر 2026 کو مکمل عمر','یکم جنوری کی عمر'],1],['15 اکتوبر 2016 کو پیدا ہونے والا بچہ کون سا فارم دیکھے؟',['9 سال','10 سال','11 سال'],0],['حصہ الف (اس سال کا نصاب) کے کتنے نمبر ہیں؟',['50','70','25'],1],['78 نمبر پر کون سا درجہ ہے؟',['ممتاز','بہت اچھا','اچھا'],1],['«پیغامِ صلح» پر پریزنٹیشن کس عمر سے ہے؟',['9 سال سے','11 سال سے','13 سال سے'],2],['ہوم ورک کا وائس نوٹ کب تک بھیجنا ہے؟',['اتوار کی شام تک','جمعہ کی صبح تک','بدھ کی شام تک'],0]]};
+var IJTEMA_QUIZ={
+ A:[
+  ["Come si chiama il nostro amato Profeta?", ["Hazrat Isa (as)", "Hazrat Musa (as)", "Hazrat Muhammad (saw)"], 2],
+  ["In quale città è nato il Santo Profeta (saw)?", ["Medina", "Mecca", "Gerusalemme"], 1],
+  ["Come si chiama il libro sacro dell'Islam?", ["Il Vangelo", "La Torah", "Il Sacro Corano"], 2],
+  ["Quante preghiere obbligatorie (namaz) facciamo ogni giorno?", ["5", "3", "7"], 0],
+  ["Come si chiama la preghiera dell'alba?", ["Fajr", "Maghrib", "Isha"], 0],
+  ["Come si chiama il Messia Promesso (as)?", ["Hazrat Mirza Tahir Ahmad (rh)", "Hazrat Hakim Nur-ud-Din (ra)", "Hazrat Mirza Ghulam Ahmad (as)"], 2],
+  ["In quale villaggio è nato il Messia Promesso (as)?", ["Rabwah", "Qadian", "Lahore"], 1],
+  ["Come si chiama il nostro Khalifa di oggi?", ["Hazrat Mirza Bashir-ud-Din Mahmud Ahmad (ra)", "Hazrat Mirza Nasir Ahmad (rh)", "Hazrat Mirza Masroor Ahmad (aba)"], 2],
+  ["Chi è stato il primo Khalifa dopo il Santo Profeta (saw)?", ["Hazrat Ali (ra)", "Hazrat Umar (ra)", "Hazrat Abu Bakr (ra)"], 2],
+  ["Quanti sono i pilastri dell'Islam?", ["4", "6", "5"], 2],
+  ["Che cosa diciamo prima di cominciare a mangiare?", ["Bismillahir Rahmanir Rahim", "Alhamdulillah", "Insha'Allah"], 0],
+  ["Come salutiamo un altro musulmano?", ["Masha'Allah", "Jazakallah", "Assalamo alaikum wa rahmatullah"], 2]
+ ],
+ B:[
+  ["Quante sure ci sono nel Sacro Corano?", ["114", "120", "99"], 0],
+  ["Qual è la prima sura del Sacro Corano?", ["Al-Fatiha", "An-Nas", "Al-Baqarah"], 0],
+  ["In quale grotta il Santo Profeta (saw) ricevette la prima rivelazione?", ["La grotta di Thaur", "La grotta di Hira", "La grotta di Badr"], 1],
+  ["Qual è stata la prima parola rivelata del Sacro Corano?", ["«Iqra'» (Leggi / Recita)", "«Bismillah»", "«Alhamdulillah»"], 0],
+  ["Che cos'è l'Hijra?", ["Il viaggio del Profeta (saw) in Siria da ragazzo", "Il pellegrinaggio dell'ultimo anno di vita del Profeta (saw)", "La migrazione del Santo Profeta (saw) da Mecca a Medina, nel 622 d.C."], 2],
+  ["Chi crebbe il Santo Profeta (saw) dopo la morte del nonno ʿAbdul Muttalib?", ["Lo zio Abu Talib", "Lo zio Hazrat Hamza (ra)", "Lo zio Abu Lahab"], 0],
+  ["Quando è nato il Messia Promesso (as)?", ["Il 26 maggio 1908", "Il 23 marzo 1889", "Il 13 febbraio 1835"], 2],
+  ["Quando e dove ebbe luogo la prima Bai'at (fondazione della Jamaʿat)?", ["Nel 1908, a Lahore", "Nel 1835, a Qadian", "Il 23 marzo 1889, a Ludhiana"], 2],
+  ["Chi fu il primo Khalifa del Messia Promesso (as)?", ["Hazrat Hakim Maulvi Nur-ud-Din (ra)", "Hazrat Mirza Nasir Ahmad (rh)", "Hazrat Mirza Bashir-ud-Din Mahmud Ahmad (ra)"], 0],
+  ["Chi è il Khalifatul Masih IV?", ["Hazrat Hakim Maulvi Nur-ud-Din (ra)", "Hazrat Mirza Tahir Ahmad (rh)", "Hazrat Mirza Masroor Ahmad (aba)"], 1],
+  ["Chi ha lanciato lo schema Waqf-e-Nau, e quando?", ["Hazrat Khalifatul Masih IV (rh), il 3 aprile 1987", "Hazrat Khalifatul Masih V (aba), nel 2003", "Hazrat Khalifatul Masih II (ra), nel 1934"], 0],
+  ["Che cosa significa «Waqf-e-Nau»?", ["«Nuova moschea»: un progetto di costruzione", "«Nuovo anno»: la festa di inizio anno", "«Nuova dedicazione»: una vita offerta al servizio dell'Islam, dedicata dai genitori già prima della nascita"], 2],
+  ["Quanti sono gli articoli di fede (Arkan-e-Iman)?", ["6", "5", "10"], 0],
+  ["In quale mese digiunano i musulmani?", ["Ramadan", "Muharram", "Shawwal"], 0],
+  ["Dove vive oggi Hazrat Khalifatul Masih V (aba)?", ["A Islamabad, Tilford (Regno Unito)", "A Rabwah (Pakistan)", "A Qadian (India)"], 0]
+ ],
+ C:[
+  ["In che anno il Messia Promesso (as) annunciò di essere il Messia Promesso e il Mahdi?", ["1882", "1891", "1905"], 1],
+  ["Quando e dove morì il Messia Promesso (as)?", ["Nel 1905, a Qadian", "Il 26 maggio 1908, a Lahore", "Nel 1889, a Ludhiana"], 1],
+  ["Quando ebbe inizio la Khilafat-e-Ahmadiyya?", ["Nel 1914", "Nel 1889", "Il 27 maggio 1908"], 2],
+  ["Quale libro del Messia Promesso (as) è nel Nisab di quest'anno (dai 13 anni)?", ["«Il Testamento» (Al-Wasiyyat)", "«Messaggio di Pace» (Paigham-e-Sulh)", "«La filosofia degli insegnamenti dell'Islam»"], 1],
+  ["Che cosa ha di particolare «Messaggio di Pace»?", ["È l'ultimo scritto del Messia Promesso (as), completato pochi giorni prima della sua morte, nel 1908", "È il suo primo libro, scritto da giovane", "È una raccolta di sue poesie in persiano"], 0],
+  ["Qual è la proposta centrale di «Messaggio di Pace»?", ["Che tutte le religioni si uniscano in una sola", "Che indù e musulmani rispettino a vicenda i propri profeti e fondatori e smettano di offenderli, per vivere in pace", "Che l'India venga divisa in due Stati"], 1],
+  ["In che anno il Messia Promesso (as) scrisse «Al-Wasiyyat» (Il Testamento)?", ["1908", "1905", "1891"], 1],
+  ["Quante sono le condizioni della Bai'at?", ["12", "5", "10"], 2],
+  ["Quale Khalifa guidò la Jamaʿat per oltre 50 anni (1914–1965)?", ["Hazrat Mirza Bashir-ud-Din Mahmud Ahmad (ra), Khalifatul Masih II", "Hazrat Mirza Nasir Ahmad (rh), Khalifatul Masih III", "Hazrat Mirza Tahir Ahmad (rh), Khalifatul Masih IV"], 0],
+  ["Chi fondò la Tahrik-e-Jadid, e quando?", ["Hazrat Khalifatul Masih II (ra), nel 1934", "Hazrat Khalifatul Masih III (rh), nel 1965", "Hazrat Khalifatul Masih IV (rh), nel 1987"], 0],
+  ["In che anno fu fondata la Majlis Khuddam-ul-Ahmadiyya?", ["1938", "1922", "1957"], 0],
+  ["Quando fu eletto Hazrat Khalifatul Masih V (aba)?", ["Il 22 aprile 2003", "Nel 1982", "Nel 2008"], 0],
+  ["«Wa mā Muḥammadun illā rasūl, qad khalat min qablihir-rusul» (3:145): che cosa dimostra?", ["Che tutti i profeti venuti prima del Santo Profeta (saw), compreso Gesù (as), sono morti", "Che Gesù (as) è ancora vivo in cielo", "Che il Corano fu rivelato in un solo giorno"], 0],
+  ["Che cosa significa «Khatam-un-Nabiyyin» (33:41)?", ["«Sigillo dei Profeti»: il Santo Profeta (saw) è il più alto in rango, e nessun profeta può venire se non come suo seguace", "«Il profeta dei soli arabi»", "«Il primo dei profeti»"], 0],
+  ["Perché Hazrat Khalifatul Masih IV (rh) lanciò lo schema Waqf-e-Nau nel 1987?", ["Per organizzare il primo Jalsa Salana", "Per raccogliere fondi per nuove moschee", "Per preparare una generazione di servitori dell'Islam per il secondo secolo dell'Ahmadiyyat (dal 1989)"], 2]
+ ]
+};
 var FAQ={
 it:[['I moduli contengono dati personali?','No. I moduli della Jaiza per età sono in bianco, senza nomi.'],['E se mio figlio compie gli anni tra settembre e l\'Ijtema?','Resta valida l\'età compiuta al 1° settembre 2026.'],['Dove trovo i testi del Nisab?','Nella scheda «Per età», sezione «Testi del Nisab ufficiale»: sono gratuiti.'],['Se perde una lezione?','I genitori aiutano a recuperare quella parte a casa; il compito si invia comunque con un messaggio vocale.'],['Le ragazze fanno la Jaiza?','Sì, i moduli sono per ragazzi e ragazze.'],['Chi contatto per dubbi?','L\'insegnante della classe di vostro figlio o vostra figlia.']],
 en:[['Do the forms contain personal data?','No. The Jaiza forms per age are blank, with no names.'],['What if my child has a birthday between September and the Ijtema?','The age completed on 1 September 2026 still applies.'],['Where do I find the Nisab texts?','In the «By age» tab, section «Official Nisab texts»: they are free.'],['What if they miss a lesson?','Parents help to catch up on that part at home; the homework is still sent as a voice note.'],['Do girls take the Jaiza?','Yes, the forms are for boys and girls.'],['Whom do I contact with doubts?','The class teacher of your son or daughter.']],
 ur:[['کیا فارموں میں ذاتی معلومات ہوتی ہیں؟','نہیں۔ عمر کے مطابق جائزے کے فارم خالی ہیں، ان میں کوئی نام نہیں۔'],['اگر ستمبر اور اجتماع کے درمیان سالگرہ آ جائے؟','یکم ستمبر 2026 کو مکمل ہونے والی عمر ہی شمار ہوگی۔'],['نصاب کی کتابیں کہاں سے ملیں گی؟','«عمر کے مطابق» ٹیب میں «سرکاری نصاب کی کتابیں» کے تحت: یہ مفت ہیں۔'],['اگر کلاس چھوٹ جائے؟','والدین گھر پر وہ حصہ پورا کروانے میں مدد کریں؛ ہوم ورک پھر بھی وائس نوٹ سے بھیجا جائے۔'],['کیا لڑکیوں کا بھی جائزہ ہوتا ہے؟','جی ہاں، فارم لڑکوں اور لڑکیوں دونوں کے لیے ہیں۔'],['کسی شک کی صورت میں کس سے رابطہ کریں؟','اپنے بیٹے یا بیٹی کی کلاس کے استاد سے۔']]};
-var L='it',TAB='home',AGE=null,qi=0,qs=0;
+var L='it',TAB='home',AGE=null,qi=0,qs=0,quizLevel=null;
 function $(i){return document.getElementById(i)}
 function tr(o){return o[L]}
 function ageFrom(d){var a=REF.getFullYear()-d.getFullYear();var bd=new Date(REF.getFullYear(),d.getMonth(),d.getDate());if(bd>REF)a--;return a}
@@ -310,13 +360,45 @@ function ijtemaSchedule(){
 }
 function renderProg(){var T=I[L];$('p-prog').innerHTML='<h3>'+T.pg+'</h3><div class="grid"><div class="card"><b>'+T.pg1+'</b><br>'+T.pg1t+'</div><div class="card"><b>'+T.pg2+'</b><br>'+T.pg2t+'</div><div class="card"><b>'+T.pg3+'</b><br>'+T.pg3t+'</div><div class="card"><b>'+T.pg4+'</b><br>'+T.pg4t+'</div></div><h3>'+T.fmt+'</h3><div class="card"><ul><li>'+T.fmt1+'</li><li>'+T.fmt2+'</li><li>'+T.fmt3+'</li><li>'+T.fmt4+'</li></ul></div><h3>'+T.ij+'</h3><p>'+documentLink('https://ataulwasihtariq.github.io/waqfe-nau/materiali/programma-ijtema-2026.pdf',IJTEMA_PROGRAM[L])+'</p>'+ijtemaSchedule()}
 function renderJaiza(){var T=I[L];$('p-jaiza').innerHTML='<h3>'+T.jz+'</h3><p>'+T.jz0+'</p><p>'+documentLink(JAIZA_DIR+'moduli-per-eta.pdf',JAIZA_ALL[L],'it')+'</p><div class="split"><span style="width:70%;background:#153963">70</span><span style="width:25%;background:#d8b674">25</span><span style="width:5%;background:#71501e">5</span></div><div class="grid" style="margin-top:12px"><div class="card"><b>'+T.jzA+'</b> · 70<br>'+T.jzA0+'</div><div class="card"><b>'+T.jzB+'</b> · 25<br>'+T.jzB0+'</div><div class="card"><b>'+T.jzC+'</b> · 5<br>'+T.jzC0+'</div></div><h3>'+T.gr+'</h3><table><tr><td>'+T.g1+'</td><td>85–100</td></tr><tr><td>'+T.g2+'</td><td>70–84</td></tr><tr><td>'+T.g3+'</td><td>50–69</td></tr><tr><td>'+T.g4+'</td><td>&lt; 50</td></tr></table><div class="note">'+T.formtxt+'</div>'}
-function renderQuiz(){var T=I[L],qq=Q[L],h='<h3>'+T.quiz+'</h3><p>'+T.quiz0+'</p><div id="wn-q"></div><h3>'+T.faq+'</h3>';
- FAQ[L].forEach(function(f){h+='<details><summary>'+f[0]+'</summary><p>'+f[1]+'</p></details>'});$('p-quiz').innerHTML=h;qi=0;qs=0;drawQ()}
-function drawQ(){var T=I[L],qq=Q[L],el=$('wn-q');if(qi>=qq.length){el.innerHTML='<div class="card"><div class="big">'+T.score+qs+' / '+qq.length+'</div><p><button class="btn" id="wn-qa">'+T.again+'</button></p></div>';$('wn-qa').onclick=function(){qi=0;qs=0;drawQ()};return}
+function renderQuiz(){
+ var T=I[L],levels=[
+  ['A',t('Level A · Ages 5–9','Livello A · 5–9 anni','درجہ A · 5–9 سال')],
+  ['B',t('Level B · Ages 10–13','Livello B · 10–13 anni','درجہ B · 10–13 سال')],
+  ['C',t('Level C · Ages 14+','Livello C · Dai 14 anni','درجہ C · 14 سال اور زائد')],
+  ['parents',t('Parent quiz','Quiz per i genitori','والدین کا کوئز')]
+ ];
+ var h='<h3>Quiz Ijtema Waqf-e-Nau 2026</h3><div class="quick">'+levels.map(function(level){
+  return '<button class="btn secondary" data-level="'+level[0]+'" aria-pressed="false">'+tr(level[1])+'</button>';
+ }).join('')+'</div><div id="wn-q"></div><h3>'+T.faq+'</h3>';
+ FAQ[L].forEach(function(f){h+='<details><summary>'+f[0]+'</summary><p>'+f[1]+'</p></details>'});
+ var panel=$('p-quiz');
+ panel.innerHTML=h;
+ panel.querySelectorAll('[data-level]').forEach(function(button){
+  button.onclick=function(){selectQuiz(button.dataset.level,true)};
+ });
+ if(quizLevel)selectQuiz(quizLevel,false);
+}
+function selectQuiz(level,focus){
+ quizLevel=level;
+ $('p-quiz').querySelectorAll('[data-level]').forEach(function(button){
+  var active=button.dataset.level===level;
+  button.setAttribute('aria-pressed',String(active));
+  button.classList.toggle('secondary',!active);
+ });
+ qi=0;qs=0;drawQ(focus);
+}
+function drawQ(focus){
+ var T=I[L],qq=quizLevel==='parents'?Q[L]:IJTEMA_QUIZ[quizLevel],el=$('wn-q');
+ if(qi>=qq.length){
+  el.innerHTML='<div class="card"><div class="big" id="wn-question" tabindex="-1">'+T.score+qs+' / '+qq.length+'</div><p><button class="btn" id="wn-qa">'+T.again+'</button></p></div>';
+  $('wn-qa').onclick=function(){qi=0;qs=0;drawQ(true)};
+  if(focus)$('wn-question').focus();
+  return;
+ }
  var q=qq[qi],locked=false;
  var reveal=t('Show answer','Mostra risposta','جواب دکھائیں');
  var correct=t('Correct answer','Risposta corretta','درست جواب');
- el.innerHTML='<div class="card"><p><b>'+(qi+1)+'/'+qq.length+'</b> · '+q[0]+'</p>'+q[1].map(function(o,i){return '<button class="opt" data-i="'+i+'">'+o+'</button>'}).join('')+'<p id="wn-answer" aria-live="polite"></p><p id="wn-nx"><button class="btn" id="wn-reveal">'+reveal[L]+'</button></p></div>';
+ el.innerHTML='<div class="card"><p id="wn-question" tabindex="-1"'+(quizLevel==='parents'?'':' lang="it"')+'><b>'+(qi+1)+'/'+qq.length+'</b> · '+q[0]+'</p>'+q[1].map(function(o,i){return '<button class="opt" data-i="'+i+'"'+(quizLevel==='parents'?'':' lang="it"')+'>'+o+'</button>'}).join('')+'<p id="wn-answer" aria-live="polite"></p><p id="wn-nx"><button class="btn" id="wn-reveal">'+reveal[L]+'</button></p></div>';
  var options=el.querySelectorAll('.opt');
  function showAnswer(selected){
   if(locked)return;
@@ -327,11 +409,12 @@ function drawQ(){var T=I[L],qq=Q[L],el=$('wn-q');if(qi>=qq.length){el.innerHTML=
   options.forEach(function(option){option.disabled=true});
   $('wn-answer').textContent=correct[L]+' · '+q[1][q[2]];
   $('wn-nx').innerHTML='<button class="btn" id="wn-n">'+T.next+'</button>';
-  $('wn-n').onclick=function(){qi++;drawQ()};
+  $('wn-n').onclick=function(){qi++;drawQ(true)};
   $('wn-n').focus();
  }
  options.forEach(function(button){button.onclick=function(){showAnswer(+button.dataset.i)}});
  $('wn-reveal').onclick=function(){showAnswer(null)};
+ if(focus)$('wn-question').focus();
 }
 function renderTeach(){var T=I[L];$('p-teach').innerHTML='<h3>'+T.tc+'</h3><p>'+T.tc0+'</p><h3>'+T.r0+'</h3><div class="card"><ol><li>'+T.r1+'</li><li>'+T.r2+'</li><li>'+T.r3+'</li><li>'+T.r4+'</li></ol></div><h3>'+T.mk+'</h3><table><tr><td>'+T.m4+'</td></tr><tr><td>'+T.m3+'</td></tr><tr><td>'+T.m2+'</td></tr><tr><td>'+T.m1+'</td></tr><tr><td>'+T.m0+'</td></tr></table><h3>'+T.rl+'</h3><div class="card"><ul><li>'+T.rl1+'</li><li>'+T.rl2+'</li><li>'+T.rl3+'</li></ul></div>'}
 var IDS=['home','child','prog','jaiza','quiz','teach'];
