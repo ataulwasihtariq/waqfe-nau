@@ -78,7 +78,6 @@ var JAIZA_DIR='materiali/jaiza-2026/';
 var JAIZA_OPEN=t('Open Jaiza form (PDF)','Apri il modulo Jaiza (PDF)','جائزے کا فارم کھولیں (PDF)');
 var JAIZA_ALL=t('All Jaiza forms by age (PDF)','Tutti i moduli Jaiza per età (PDF)','عمر کے مطابق تمام جائزہ فارم (PDF)');
 var IJTEMA_PROGRAM=t('Ijtema timetable · Sunday 22 November (PDF)','Programma dell’Ijtema · domenica 22 novembre (PDF)','اجتماع کا پروگرام · اتوار 22 نومبر (PDF)');
-var JAIZA_DATE=t('The forms show 21 November. The Ijtema timetable gives Sunday 22 November 2026.','I moduli riportano il 21 novembre. Il programma dell’Ijtema indica domenica 22 novembre 2026.','فارموں پر 21 نومبر درج ہے۔ اجتماع کے پروگرام میں اتوار 22 نومبر 2026 لکھا ہے۔');
 function documentLink(path,label,language){
  return '<a class="btn" href="'+path+'" target="_blank" rel="noopener"'+(language?' lang="'+language+'"':'')+'>'+label+'</a>';
 }
@@ -245,7 +244,7 @@ function showRes(){var T=I[L],el=$('wn-res');if(AGE===null){el.innerHTML='';retu
  var over=AGE===22;
  var formFile=JAIZA_DIR+(over?'oltre-21':AGE)+'.pdf';
  var heading=over?T.over:T.ageis+AGE+T.years;
- var h='<div class="card"><div class="big">'+heading+'</div><p>'+nisabLink(NISAB_PAGES[AGE],NISAB_LABEL[L])+'</p><h4>'+T.form+'</h4><p>'+T.formtxt+'</p><p>'+documentLink(formFile,JAIZA_OPEN[L],'it')+'</p><p class="or">'+JAIZA_DATE[L]+'</p></div>';
+ var h='<div class="card"><div class="big">'+heading+'</div><p>'+nisabLink(NISAB_PAGES[AGE],NISAB_LABEL[L])+'</p><h4>'+T.form+'</h4><p>'+T.formtxt+'</p><p>'+documentLink(formFile,JAIZA_OPEN[L],'it')+'</p></div>';
  if(over){el.innerHTML=h;return}
  var cats=itemsFor(AGE),st=store('ck_'+AGE)||{},tot=0,done=0;
  if(!cats.length)h+='<div class="note">'+T.noData+'</div>';
@@ -258,7 +257,7 @@ function showRes(){var T=I[L],el=$('wn-res');if(AGE===null){el.innerHTML='';retu
  var rs=$('wn-reset');if(rs)rs.onclick=function(){store('ck_'+AGE,{});showRes()}}
 function renderHome(){var T=I[L];$('p-home').innerHTML='<h3>'+T.h1+'</h3><p>'+T.h2+'</p><h3>'+T.h3+'</h3><div class="grid"><div class="card"><div class="big">1</div>'+T.s1+'</div><div class="card"><div class="big">2</div>'+T.s2+'</div><div class="card"><div class="big">3</div>'+T.s3+'</div></div><p><button class="btn" id="wn-go">'+T.hb+'</button></p><div class="note">'+T.priv+'</div>';$('wn-go').onclick=function(){tab('child')}}
 function renderProg(){var T=I[L];$('p-prog').innerHTML='<h3>'+T.pg+'</h3><div class="grid"><div class="card"><b>'+T.pg1+'</b><br>'+T.pg1t+'</div><div class="card"><b>'+T.pg2+'</b><br>'+T.pg2t+'</div><div class="card"><b>'+T.pg3+'</b><br>'+T.pg3t+'</div><div class="card"><b>'+T.pg4+'</b><br>'+T.pg4t+'</div></div><h3>'+T.fmt+'</h3><div class="card"><ul><li>'+T.fmt1+'</li><li>'+T.fmt2+'</li><li>'+T.fmt3+'</li><li>'+T.fmt4+'</li></ul></div><h3>'+T.ij+'</h3><p>'+documentLink('materiali/programma-ijtema-2026.pdf',IJTEMA_PROGRAM[L])+'</p>'}
-function renderJaiza(){var T=I[L];$('p-jaiza').innerHTML='<h3>'+T.jz+'</h3><p>'+T.jz0+'</p><p>'+documentLink(JAIZA_DIR+'moduli-per-eta.pdf',JAIZA_ALL[L],'it')+'</p><p class="or">'+JAIZA_DATE[L]+'</p><div class="split"><span style="width:70%;background:#2f5d4a">70</span><span style="width:25%;background:#a8873a">25</span><span style="width:5%;background:#6b4f1d">5</span></div><div class="grid" style="margin-top:12px"><div class="card"><b>'+T.jzA+'</b> · 70<br>'+T.jzA0+'</div><div class="card"><b>'+T.jzB+'</b> · 25<br>'+T.jzB0+'</div><div class="card"><b>'+T.jzC+'</b> · 5<br>'+T.jzC0+'</div></div><h3>'+T.gr+'</h3><table><tr><td>'+T.g1+'</td><td>85–100</td></tr><tr><td>'+T.g2+'</td><td>70–84</td></tr><tr><td>'+T.g3+'</td><td>50–69</td></tr><tr><td>'+T.g4+'</td><td>&lt; 50</td></tr></table><div class="note">'+T.formtxt+'</div>'}
+function renderJaiza(){var T=I[L];$('p-jaiza').innerHTML='<h3>'+T.jz+'</h3><p>'+T.jz0+'</p><p>'+documentLink(JAIZA_DIR+'moduli-per-eta.pdf',JAIZA_ALL[L],'it')+'</p><div class="split"><span style="width:70%;background:#2f5d4a">70</span><span style="width:25%;background:#a8873a">25</span><span style="width:5%;background:#6b4f1d">5</span></div><div class="grid" style="margin-top:12px"><div class="card"><b>'+T.jzA+'</b> · 70<br>'+T.jzA0+'</div><div class="card"><b>'+T.jzB+'</b> · 25<br>'+T.jzB0+'</div><div class="card"><b>'+T.jzC+'</b> · 5<br>'+T.jzC0+'</div></div><h3>'+T.gr+'</h3><table><tr><td>'+T.g1+'</td><td>85–100</td></tr><tr><td>'+T.g2+'</td><td>70–84</td></tr><tr><td>'+T.g3+'</td><td>50–69</td></tr><tr><td>'+T.g4+'</td><td>&lt; 50</td></tr></table><div class="note">'+T.formtxt+'</div>'}
 function renderQuiz(){var T=I[L],qq=Q[L],h='<h3>'+T.quiz+'</h3><p>'+T.quiz0+'</p><div id="wn-q"></div><h3>'+T.faq+'</h3>';
  FAQ[L].forEach(function(f){h+='<details><summary>'+f[0]+'</summary><p>'+f[1]+'</p></details>'});$('p-quiz').innerHTML=h;qi=0;qs=0;drawQ()}
 function drawQ(){var T=I[L],qq=Q[L],el=$('wn-q');if(qi>=qq.length){el.innerHTML='<div class="card"><div class="big">'+T.score+qs+' / '+qq.length+'</div><p><button class="btn" id="wn-qa">'+T.again+'</button></p></div>';$('wn-qa').onclick=function(){qi=0;qs=0;drawQ()};return}
