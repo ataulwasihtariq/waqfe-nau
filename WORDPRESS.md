@@ -11,4 +11,4 @@ Prima fate vedere la versione online per l'approvazione; poi:
 `<iframe src="https://ataulwasihtariq.github.io/waqfe-nau/" style="width:100%;height:2600px;border:0" title="Waqf-e-Nau"></iframe>`
 
 Se il vostro ruolo non permette l'HTML personalizzato, chiedete all'amministratore di incollare il blocco.
-Per aggiungere i PDF dei moduli Jaiza: caricateli nella Libreria media e metteteli come link nella pagina.
+Il blocco include programma, quiz e link ai PDF pubblici su GitHub Pages. Nell’anteprima, verificate che WordPress consenta gli script e che i pulsanti e i PDF si aprano. Se gli script vengono rimossi, usate l’iframe.

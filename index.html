@@ -95,7 +95,11 @@ tin:t('At-Tin','At-Tin','التین'),ins:t('Al-Inshirah','Al-Inshirah','الا�
 ahz:t('Al-Ahzab','Al-Ahzab','الاحزاب'),has:t('Al-Hashr','Al-Hashr','الحشر'),gha:t('Al-Ghashiyah','Al-Ghashiyah','الغاشیہ'),ala:t("Al-A'la",'Al-A\'la','الاعلیٰ'),
 bur:t('Al-Buruj','Al-Buruj','البروج'),tar:t('At-Tariq','At-Tariq','الطارق'),dah:t('Ad-Dahr','Ad-Dahr','الدہر'),saf:t('As-Saff','As-Saff','الصف'),
 jum:t("Al-Jumu'ah",'Al-Jumu\'ah','الجمعہ'),rah:t('Ar-Rahman','Ar-Rahman','الرحمٰن')};
-function H(k,v){return {s:S[k],v:v}}
+var SURAH_NUMBER={baq:2,ak:2,fil:105,ali:3,ana:6,lah:111,qur:106,nas:110,kaf:109,mao:107,rad:13,nah:16,isr:17,saj:41,qar:101,tak:102,qad:97,zil:99,tin:95,ins:94,duh:93,kah:18,ahz:33,has:59,gha:88,ala:87,bur:85,tar:86,dah:76,saf:61,jum:62,rah:55};
+function tilawatLink(number,label){
+ return '<a href="https://tilaw.at/'+number+':1" target="_blank" rel="noopener">'+label+'</a>';
+}
+function H(k,v){return {s:S[k],v:v,n:SURAH_NUMBER[k]}}
 var HIFZ={
 8:[H('baq','1–5'),H('ak',''),H('baq','6–10')],
 9:[H('baq','11–17'),H('fil','')],
@@ -250,19 +254,64 @@ function showRes(){var T=I[L],el=$('wn-res');if(AGE===null){el.innerHTML='';retu
  if(!cats.length)h+='<div class="note">'+T.noData+'</div>';
  else{cats.forEach(function(c,ci){h+='<h3>'+T[c.k]+'</h3>';
  if(c.k==='cHad')h+='<p>'+nisabLink(HADITH_PAGES[AGE]||NISAB_PAGES[AGE],T.cHad+' · '+NISAB_LABEL[L])+'</p>';
- h+='<ul class="ck">';c.l.forEach(function(x,i){var id=ci+'_'+i;tot++;var on=st[id];if(on)done++;h+='<li><label><input type="checkbox" data-id="'+id+'"'+(on?' checked':'')+'><span>'+x+'</span></label></li>'});h+='</ul>'});
+ h+='<ul class="ck">';c.l.forEach(function(x,i){var id=ci+'_'+i;tot++;var on=st[id];if(on)done++;h+='<li><label><input type="checkbox" data-id="'+id+'"'+(on?' checked':'')+'><span>'+x+'</span></label>'+(c.k==='cHifz'?' · '+tilawatLink(HIFZ[AGE][i].n,'Tilawat'):'')+'</li>'});h+='</ul>'});
  h+='<div class="card"><b>'+T.prog+'</b>: <span id="wn-pc">'+Math.round(done/tot*100)+'%</span><div class="bar"><i id="wn-bar" style="width:'+Math.round(done/tot*100)+'%"></i></div><p class="noprint"><button class="btn" onclick="window.print()">'+T.print+'</button> <button class="btn" id="wn-reset" style="background:#8a7a4a">'+T.reset+'</button></p></div>'}
  el.innerHTML=h;
  el.querySelectorAll('input[type=checkbox]').forEach(function(cb){cb.onchange=function(){var s=store('ck_'+AGE)||{};s[cb.dataset.id]=cb.checked;store('ck_'+AGE,s);var n=el.querySelectorAll('input:checked').length;var p=Math.round(n/tot*100);$('wn-pc').textContent=p+'%';$('wn-bar').style.width=p+'%'}});
  var rs=$('wn-reset');if(rs)rs.onclick=function(){store('ck_'+AGE,{});showRes()}}
 function renderHome(){var T=I[L];$('p-home').innerHTML='<h3>'+T.h1+'</h3><p>'+T.h2+'</p><h3>'+T.h3+'</h3><div class="grid"><div class="card"><div class="big">1</div>'+T.s1+'</div><div class="card"><div class="big">2</div>'+T.s2+'</div><div class="card"><div class="big">3</div>'+T.s3+'</div></div><p><button class="btn" id="wn-go">'+T.hb+'</button></p><div class="note">'+T.priv+'</div>';$('wn-go').onclick=function(){tab('child')}}
-function renderProg(){var T=I[L];$('p-prog').innerHTML='<h3>'+T.pg+'</h3><div class="grid"><div class="card"><b>'+T.pg1+'</b><br>'+T.pg1t+'</div><div class="card"><b>'+T.pg2+'</b><br>'+T.pg2t+'</div><div class="card"><b>'+T.pg3+'</b><br>'+T.pg3t+'</div><div class="card"><b>'+T.pg4+'</b><br>'+T.pg4t+'</div></div><h3>'+T.fmt+'</h3><div class="card"><ul><li>'+T.fmt1+'</li><li>'+T.fmt2+'</li><li>'+T.fmt3+'</li><li>'+T.fmt4+'</li></ul></div><h3>'+T.ij+'</h3><p>'+documentLink('materiali/programma-ijtema-2026.pdf',IJTEMA_PROGRAM[L])+'</p>'}
+var IJTEMA_SESSIONS=[
+ ['Sessione di apertura',[
+  ['10:00–10:30','Arrivo e registrazione','Ingresso'],
+  ['10:30','Tilawat · '+tilawatLink(3,'Āl-e-ʿImrān, vv. 36–38')+' · traduzione in urdu e in italiano','Sala principale'],
+  ['10:40','Nazm (poesia)','Sala principale'],
+  ['10:45','Benvenuto e istruzioni del Segretario Nazionale Waqf-e-Nau','Sala principale'],
+  ['10:50–12:30','Jaiza in gruppi e concorso artistico per chi attende','Sala principale'],
+  ['12:30–13:00','Quiz a tre livelli','Sala principale']]],
+ ['Pausa',[
+  ['13:00–14:00','Pranzo',''],['14:00–14:15','Preghiere Zuhr e ʿAsr','']]],
+ ['Sessione pomeridiana',[
+  ['14:15–14:35','Per tutti · «Gli algoritmi: che cosa ci mostrano i social e perché?» · Atta Ur Rafay Ekbal','Sala principale'],
+  ['14:35–15:00','Sotto i 13 anni · «Sei un dono per Allah: cosa vuol dire essere Waqf-e-Nau» · Murabbi Syed Aqeel Shah','Sala principale'],
+  ['14:35–15:00','Dai 13 anni · Incontro con Ataul Wasih Tariq, Muballigh Incharge Italia','Biblioteca'],
+  ['15:00–16:00','Sotto i 13 anni · Presentazioni e mostra del concorso artistico','Sala principale'],
+  ['15:00–16:00','Dai 13 anni · Presentazioni su «Messaggio di Pace» (Jaiza)','Biblioteca']]],
+ ['Sessione di chiusura',[
+  ['16:00','Tilawat · '+tilawatLink(3,'Āl-e-ʿImrān, vv. 103–105')+' · con traduzione','Sala principale'],
+  ['16:05','Premiazione','Sala principale'],
+  ['16:15–16:30','Discorso conclusivo e Duʿa','Sala principale']]]];
+function ijtemaSchedule(){
+ return '<div lang="it" dir="ltr"><p><strong>Domenica 22 novembre 2026</strong></p>'+IJTEMA_SESSIONS.map(function(section){
+  return '<h4>'+section[0]+'</h4><table><thead><tr><th scope="col">Orario</th><th scope="col">Programma</th><th scope="col">Luogo</th></tr></thead><tbody>'+section[1].map(function(row){
+   return '<tr><td>'+row[0]+'</td><td>'+row[1]+'</td><td>'+row[2]+'</td></tr>';
+  }).join('')+'</tbody></table>';
+ }).join('')+'<p>I genitori possono assistere a uno dei due programmi del pomeriggio.</p></div>';
+}
+function renderProg(){var T=I[L];$('p-prog').innerHTML='<h3>'+T.pg+'</h3><div class="grid"><div class="card"><b>'+T.pg1+'</b><br>'+T.pg1t+'</div><div class="card"><b>'+T.pg2+'</b><br>'+T.pg2t+'</div><div class="card"><b>'+T.pg3+'</b><br>'+T.pg3t+'</div><div class="card"><b>'+T.pg4+'</b><br>'+T.pg4t+'</div></div><h3>'+T.fmt+'</h3><div class="card"><ul><li>'+T.fmt1+'</li><li>'+T.fmt2+'</li><li>'+T.fmt3+'</li><li>'+T.fmt4+'</li></ul></div><h3>'+T.ij+'</h3><p>'+documentLink('materiali/programma-ijtema-2026.pdf',IJTEMA_PROGRAM[L])+'</p>'+ijtemaSchedule()}
 function renderJaiza(){var T=I[L];$('p-jaiza').innerHTML='<h3>'+T.jz+'</h3><p>'+T.jz0+'</p><p>'+documentLink(JAIZA_DIR+'moduli-per-eta.pdf',JAIZA_ALL[L],'it')+'</p><div class="split"><span style="width:70%;background:#2f5d4a">70</span><span style="width:25%;background:#a8873a">25</span><span style="width:5%;background:#6b4f1d">5</span></div><div class="grid" style="margin-top:12px"><div class="card"><b>'+T.jzA+'</b> · 70<br>'+T.jzA0+'</div><div class="card"><b>'+T.jzB+'</b> · 25<br>'+T.jzB0+'</div><div class="card"><b>'+T.jzC+'</b> · 5<br>'+T.jzC0+'</div></div><h3>'+T.gr+'</h3><table><tr><td>'+T.g1+'</td><td>85–100</td></tr><tr><td>'+T.g2+'</td><td>70–84</td></tr><tr><td>'+T.g3+'</td><td>50–69</td></tr><tr><td>'+T.g4+'</td><td>&lt; 50</td></tr></table><div class="note">'+T.formtxt+'</div>'}
 function renderQuiz(){var T=I[L],qq=Q[L],h='<h3>'+T.quiz+'</h3><p>'+T.quiz0+'</p><div id="wn-q"></div><h3>'+T.faq+'</h3>';
  FAQ[L].forEach(function(f){h+='<details><summary>'+f[0]+'</summary><p>'+f[1]+'</p></details>'});$('p-quiz').innerHTML=h;qi=0;qs=0;drawQ()}
 function drawQ(){var T=I[L],qq=Q[L],el=$('wn-q');if(qi>=qq.length){el.innerHTML='<div class="card"><div class="big">'+T.score+qs+' / '+qq.length+'</div><p><button class="btn" id="wn-qa">'+T.again+'</button></p></div>';$('wn-qa').onclick=function(){qi=0;qs=0;drawQ()};return}
- var q=qq[qi];el.innerHTML='<div class="card"><p><b>'+(qi+1)+'/'+qq.length+'</b> · '+q[0]+'</p>'+q[1].map(function(o,i){return '<button class="opt" data-i="'+i+'">'+o+'</button>'}).join('')+'<p id="wn-nx"></p></div>';
- el.querySelectorAll('.opt').forEach(function(b){b.onclick=function(){if(el.dataset.done==qi)return;el.dataset.done=qi;var ok=+b.dataset.i===q[2];if(ok)qs++;b.classList.add(ok?'ok':'no');if(!ok)el.querySelector('[data-i="'+q[2]+'"]').classList.add('ok');$('wn-nx').innerHTML='<button class="btn" id="wn-n">'+T.next+'</button>';$('wn-n').onclick=function(){qi++;drawQ()}}})}
+ var q=qq[qi],locked=false;
+ var reveal=t('Show answer','Mostra risposta','جواب دکھائیں');
+ var correct=t('Correct answer','Risposta corretta','درست جواب');
+ el.innerHTML='<div class="card"><p><b>'+(qi+1)+'/'+qq.length+'</b> · '+q[0]+'</p>'+q[1].map(function(o,i){return '<button class="opt" data-i="'+i+'">'+o+'</button>'}).join('')+'<p id="wn-answer" aria-live="polite"></p><p id="wn-nx"><button class="btn" id="wn-reveal">'+reveal[L]+'</button></p></div>';
+ var options=el.querySelectorAll('.opt');
+ function showAnswer(selected){
+  if(locked)return;
+  locked=true;
+  if(selected===q[2])qs++;
+  else if(selected!==null)options[selected].classList.add('no');
+  options[q[2]].classList.add('ok');
+  options.forEach(function(option){option.disabled=true});
+  $('wn-answer').textContent=correct[L]+' · '+q[1][q[2]];
+  $('wn-nx').innerHTML='<button class="btn" id="wn-n">'+T.next+'</button>';
+  $('wn-n').onclick=function(){qi++;drawQ()};
+  $('wn-n').focus();
+ }
+ options.forEach(function(button){button.onclick=function(){showAnswer(+button.dataset.i)}});
+ $('wn-reveal').onclick=function(){showAnswer(null)};
+}
 function renderTeach(){var T=I[L];$('p-teach').innerHTML='<h3>'+T.tc+'</h3><p>'+T.tc0+'</p><h3>'+T.r0+'</h3><div class="card"><ol><li>'+T.r1+'</li><li>'+T.r2+'</li><li>'+T.r3+'</li><li>'+T.r4+'</li></ol></div><h3>'+T.mk+'</h3><table><tr><td>'+T.m4+'</td></tr><tr><td>'+T.m3+'</td></tr><tr><td>'+T.m2+'</td></tr><tr><td>'+T.m1+'</td></tr><tr><td>'+T.m0+'</td></tr></table><h3>'+T.rl+'</h3><div class="card"><ul><li>'+T.rl1+'</li><li>'+T.rl2+'</li><li>'+T.rl3+'</li></ul></div>'}
 var IDS=['home','child','prog','jaiza','quiz','teach'];
 function tab(id){TAB=id;IDS.forEach(function(x){$('p-'+x).classList.toggle('on',x===id)});document.querySelectorAll('#wn-tabs button').forEach(function(b){b.classList.toggle('on',b.dataset.t===id)});if(id==='child')renderChild();root.scrollIntoView&&0}

@@ -65,6 +65,20 @@ var root=document.getElementById('wn');
 var REF=new Date(2026,8,1); /* 1 Sept 2026: age reference date */
 var IJTEMA=new Date(2026,10,22); /* Ijtema: Sunday 22 Nov 2026 - change here if needed */
 var LINKS={p1:'https://files.alislam.cloud/pdf/Syllabus-WN-Part-1.pdf',p2:'https://new.alislam.org/library/books/syllabus-waqf-e-nau-part-2-years-7-15',p3:'https://files.alislam.cloud/pdf/Syllabus-WN-Part-3.pdf'};
+var NISAB_IT='https://ataulwasihtariq.github.io/waqfe-nau/materiali/nisab-italiano.pdf';
+var NISAB_PAGES={3:12,4:14,5:15,6:16,7:19,8:20,9:22,10:23,11:27,12:29,13:32,14:38,15:43,16:46,17:47,18:49,19:49,20:51,21:51};
+var HADITH_PAGES={7:19,8:21,9:22,10:24,11:27,12:29,13:33,14:38,15:43,17:48,18:49,19:49,20:51};
+var NISAB_LABEL=t('Italian Nisab (PDF)','Nisab in italiano (PDF)','اطالوی نصاب (PDF)');
+var JAIZA_DIR='https://ataulwasihtariq.github.io/waqfe-nau/materiali/jaiza-2026/';
+var JAIZA_OPEN=t('Open Jaiza form (PDF)','Apri il modulo Jaiza (PDF)','جائزے کا فارم کھولیں (PDF)');
+var JAIZA_ALL=t('All Jaiza forms by age (PDF)','Tutti i moduli Jaiza per età (PDF)','عمر کے مطابق تمام جائزہ فارم (PDF)');
+var IJTEMA_PROGRAM=t('Ijtema timetable · Sunday 22 November (PDF)','Programma dell’Ijtema · domenica 22 novembre (PDF)','اجتماع کا پروگرام · اتوار 22 نومبر (PDF)');
+function documentLink(path,label,language){
+ return '<a class="btn" href="'+path+'" target="_blank" rel="noopener"'+(language?' lang="'+language+'"':'')+'>'+label+'</a>';
+}
+function nisabLink(page,label){
+ return '<a class="btn" href="'+NISAB_IT+(page?'#page='+page:'')+'" target="_blank" rel="noopener" lang="it">'+label+'</a>';
+}
 function t(en,it,ur){return {en:en,it:it,ur:ur}}
 var S={ /* surah names */
 baq:t('Al-Baqarah','Al-Baqarah','البقرہ'),ak:t('Ayatul Kursi','Ayatul Kursi','آیت الکرسی'),fil:t('Al-Fil','Al-Fil','الفیل'),
@@ -76,7 +90,11 @@ tin:t('At-Tin','At-Tin','التین'),ins:t('Al-Inshirah','Al-Inshirah','الا�
 ahz:t('Al-Ahzab','Al-Ahzab','الاحزاب'),has:t('Al-Hashr','Al-Hashr','الحشر'),gha:t('Al-Ghashiyah','Al-Ghashiyah','الغاشیہ'),ala:t("Al-A'la",'Al-A\'la','الاعلیٰ'),
 bur:t('Al-Buruj','Al-Buruj','البروج'),tar:t('At-Tariq','At-Tariq','الطارق'),dah:t('Ad-Dahr','Ad-Dahr','الدہر'),saf:t('As-Saff','As-Saff','الصف'),
 jum:t("Al-Jumu'ah",'Al-Jumu\'ah','الجمعہ'),rah:t('Ar-Rahman','Ar-Rahman','الرحمٰن')};
-function H(k,v){return {s:S[k],v:v}}
+var SURAH_NUMBER={baq:2,ak:2,fil:105,ali:3,ana:6,lah:111,qur:106,nas:110,kaf:109,mao:107,rad:13,nah:16,isr:17,saj:41,qar:101,tak:102,qad:97,zil:99,tin:95,ins:94,duh:93,kah:18,ahz:33,has:59,gha:88,ala:87,bur:85,tar:86,dah:76,saf:61,jum:62,rah:55};
+function tilawatLink(number,label){
+ return '<a href="https://tilaw.at/'+number+':1" target="_blank" rel="noopener">'+label+'</a>';
+}
+function H(k,v){return {s:S[k],v:v,n:SURAH_NUMBER[k]}}
 var HIFZ={
 8:[H('baq','1–5'),H('ak',''),H('baq','6–10')],
 9:[H('baq','11–17'),H('fil','')],
@@ -123,7 +141,7 @@ it:{title:'Waqf-e-Nau Italia',sub:'Programma 2026 · Nisab · Jaiza · Ijtema',t
  cHifz:'Corano (Hifz)',cNamaz:'Namaz e preghiere',cHad:'Hadith e Nomi di Allah',cQas:'Qaseeda',cOther:'Altro',
  verses:'versetti ',noData:'Per questa età il programma dettagliato è nel Nisab ufficiale (indicato sotto). Chiedete all\'insegnante.',
  prog:'Preparazione',of:' completato',print:'Stampa questa pagina',reset:'Azzera segni',
- form:'Modulo della Jaiza',formtxt:'A · Nisab di quest\'anno (70 punti) · B · Ripasso (25 punti) · C · Pratica e condotta (5 punti). Il modulo dell\'età viene consegnato dall\'insegnante.',
+ form:'Modulo della Jaiza',formtxt:'A · Nisab di quest\'anno (70 punti) · B · Ripasso (25 punti) · C · Pratica e condotta (5 punti).',
  nis:'Testi del Nisab ufficiale (gratuiti)',p1:'Parte 1 (1–7 anni)',p2:'Parte 2 (7–15 anni)',p3:'Parte 3 (15–21 anni e oltre)',
  pg:'Programma delle classi 2026',pg1:'Periodo',pg1t:'Dal 7 settembre al 20 novembre 2026: 11 settimane.',pg2:'Settimane 1–9',pg2t:'Contenuti nuovi del Nisab della propria età.',pg3:'Settimana 10',pg3t:'Ripasso, compresi gli anni precedenti.',pg4:'Settimana 11',pg4t:'Prova generale della Jaiza.',
  fmt:'Come funzionano le classi',fmt1:'Una classe a settimana da 30 minuti per ogni ragazzo/a, in un piccolo gruppo (circa 5–6) guidato da un insegnante.',fmt2:'Ogni insegnante concorda l\'orario con il proprio gruppo e lo mantiene.',fmt3:'Ogni settimana si invia un messaggio vocale WhatsApp con il compito, entro domenica sera.',fmt4:'Se si perde una lezione, i genitori aiutano a recuperare quella parte a casa.',
@@ -148,7 +166,7 @@ en:{title:'Waqf-e-Nau Italy',sub:'2026 programme · Nisab · Jaiza · Ijtema',ta
  cHifz:'Quran (Hifz)',cNamaz:'Namaz and prayers',cHad:'Hadith and Names of Allah',cQas:'Qaseeda',cOther:'Other',
  verses:'verses ',noData:'For this age the detailed programme is in the official Nisab (linked below). Ask the class teacher.',
  prog:'Preparation',of:' done',print:'Print this page',reset:'Clear ticks',
- form:'Jaiza form',formtxt:'A · This year\'s Nisab (70 points) · B · Revision (25 points) · C · Practice and conduct (5 points). The form for the age is given out by the teacher.',
+ form:'Jaiza form',formtxt:'A · This year\'s Nisab (70 points) · B · Revision (25 points) · C · Practice and conduct (5 points).',
  nis:'Official Nisab texts (free)',p1:'Part 1 (ages 1–7)',p2:'Part 2 (ages 7–15)',p3:'Part 3 (ages 15–21 and over)',
  pg:'2026 class programme',pg1:'Term',pg1t:'7 September to 20 November 2026: 11 weeks.',pg2:'Weeks 1–9',pg2t:'New content from the Nisab for the child\'s age.',pg3:'Week 10',pg3t:'Revision, including earlier years.',pg4:'Week 11',pg4t:'Mock Jaiza.',
  fmt:'How the classes work',fmt1:'One 30-minute class a week for every boy and girl, in a small group (about 5–6) led by a teacher.',fmt2:'Each teacher agrees the time with their own group and keeps it.',fmt3:'Each week a WhatsApp voice note with the homework is sent, by Sunday evening.',fmt4:'If a lesson is missed, parents help to catch up on that part at home.',
@@ -173,7 +191,7 @@ ur:{title:'وقفِ نو اٹلی',sub:'پروگرام 2026 · نصاب · جا�
  cHifz:'قرآن (حفظ)',cNamaz:'نماز اور دعائیں',cHad:'احادیث اور اللہ کے نام',cQas:'قصیدہ',cOther:'دیگر',
  verses:'آیات ',noData:'اس عمر کا تفصیلی پروگرام سرکاری نصاب میں ہے (نیچے لنک)۔ کلاس کے استاد سے پوچھیں۔',
  prog:'تیاری',of:' مکمل',print:'یہ صفحہ پرنٹ کریں',reset:'نشان مٹائیں',
- form:'جائزے کا فارم',formtxt:'الف · اس سال کا نصاب (70 نمبر) · ب · دہرائی (25 نمبر) · ج · عمل اور اخلاق (5 نمبر)۔ عمر کے مطابق فارم استاد دیتے ہیں۔',
+ form:'جائزے کا فارم',formtxt:'الف · اس سال کا نصاب (70 نمبر) · ب · دہرائی (25 نمبر) · ج · عمل اور اخلاق (5 نمبر)۔',
  nis:'سرکاری نصاب کی کتابیں (مفت)',p1:'حصہ 1 (1 تا 7 سال)',p2:'حصہ 2 (7 تا 15 سال)',p3:'حصہ 3 (15 تا 21 سال اور اس سے اوپر)',
  pg:'کلاسوں کا پروگرام 2026',pg1:'مدت',pg1t:'7 ستمبر سے 20 نومبر 2026 تک: 11 ہفتے۔',pg2:'ہفتے 1 تا 9',pg2t:'بچے کی عمر کے نصاب کا نیا مواد۔',pg3:'ہفتہ 10',pg3t:'دہرائی، پچھلے سالوں سمیت۔',pg4:'ہفتہ 11',pg4t:'جائزے کی مشق۔',
  fmt:'کلاسیں کیسے ہوتی ہیں',fmt1:'ہر بچے اور بچی کی ہفتے میں ایک کلاس، 30 منٹ کی، استاد کے ساتھ چھوٹے گروپ (تقریباً 5–6) میں۔',fmt2:'ہر استاد اپنے گروپ کے ساتھ وقت طے کرتا ہے اور اسی پر قائم رہتا ہے۔',fmt3:'ہر ہفتے ہوم ورک کا واٹس ایپ وائس نوٹ اتوار کی شام تک بھیجا جاتا ہے۔',fmt4:'کلاس چھوٹ جائے تو والدین گھر پر وہ حصہ پورا کروانے میں مدد کریں۔',
@@ -213,32 +231,82 @@ function itemsFor(a){var c=[];
 function renderChild(){var T=I[L],h='<h3>'+T.age+'</h3><div class="card"><div class="row"><label>'+T.ageq+' <input type="date" id="wn-bd" min="1990-01-01" max="2026-12-31"></label><span class="or">'+T.ageor+'</span><select id="wn-sel"><option value="">–</option>';
  for(var a=3;a<=22;a++)h+='<option value="'+a+'"'+(AGE===a?' selected':'')+'>'+(a===22?'21+':a)+'</option>';
  h+='</select></div><p class="or">'+T.ageref+'</p></div><div id="wn-res"></div>';
- h+='<h3>'+T.nis+'</h3><p><a class="btn" href="'+LINKS.p1+'" target="_blank" rel="noopener">'+T.p1+'</a><a class="btn" href="'+LINKS.p2+'" target="_blank" rel="noopener">'+T.p2+'</a><a class="btn" href="'+LINKS.p3+'" target="_blank" rel="noopener">'+T.p3+'</a></p>';
+ h+='<h3>'+T.nis+'</h3><p>'+nisabLink(null,NISAB_LABEL[L])+'<a class="btn" href="'+LINKS.p1+'" target="_blank" rel="noopener">'+T.p1+'</a><a class="btn" href="'+LINKS.p2+'" target="_blank" rel="noopener">'+T.p2+'</a><a class="btn" href="'+LINKS.p3+'" target="_blank" rel="noopener">'+T.p3+'</a></p>';
  h+='<h3>'+T.tab+'</h3><table><tr><th>'+T.bd+'</th><th>'+T.fm+'</th></tr>'+ROWS.map(function(r){return '<tr><td>'+r[1]+'</td><td>'+r[0]+T.years+'</td></tr>'}).join('')+'</table>';
  $('p-child').innerHTML=h;
- $('wn-bd').onchange=function(){if(!this.value)return;var d=new Date(this.value);var a=ageFrom(d);setAge(a<3?0:a>21?22:a)};
+ $('wn-bd').onchange=function(){if(!this.value)return;var d=new Date(this.value+'T00:00:00');var a=ageFrom(d);setAge(a<3?0:a>21?22:a)};
  $('wn-sel').onchange=function(){setAge(this.value?+this.value:null)};
  showRes()}
 function setAge(a){AGE=a;store('age',a);$('wn-sel').value=a===null?'':a;showRes()}
 function showRes(){var T=I[L],el=$('wn-res');if(AGE===null){el.innerHTML='';return}
  if(AGE===0){el.innerHTML='<div class="note">'+T.none+'</div>';return}
- if(AGE===22){el.innerHTML='<div class="note">'+T.over+'</div>';return}
- var h='<div class="card"><div class="big">'+T.ageis+AGE+T.years+'</div><p>'+T.formtxt+'</p></div>';
+ var over=AGE===22;
+ var formFile=JAIZA_DIR+(over?'oltre-21':AGE)+'.pdf';
+ var heading=over?T.over:T.ageis+AGE+T.years;
+ var h='<div class="card"><div class="big">'+heading+'</div><p>'+nisabLink(NISAB_PAGES[AGE],NISAB_LABEL[L])+'</p><h4>'+T.form+'</h4><p>'+T.formtxt+'</p><p>'+documentLink(formFile,JAIZA_OPEN[L],'it')+'</p></div>';
+ if(over){el.innerHTML=h;return}
  var cats=itemsFor(AGE),st=store('ck_'+AGE)||{},tot=0,done=0;
  if(!cats.length)h+='<div class="note">'+T.noData+'</div>';
- else{cats.forEach(function(c,ci){h+='<h3>'+T[c.k]+'</h3><ul class="ck">';c.l.forEach(function(x,i){var id=ci+'_'+i;tot++;var on=st[id];if(on)done++;h+='<li><label><input type="checkbox" data-id="'+id+'"'+(on?' checked':'')+'><span>'+x+'</span></label></li>'});h+='</ul>'});
+ else{cats.forEach(function(c,ci){h+='<h3>'+T[c.k]+'</h3>';
+ if(c.k==='cHad')h+='<p>'+nisabLink(HADITH_PAGES[AGE]||NISAB_PAGES[AGE],T.cHad+' · '+NISAB_LABEL[L])+'</p>';
+ h+='<ul class="ck">';c.l.forEach(function(x,i){var id=ci+'_'+i;tot++;var on=st[id];if(on)done++;h+='<li><label><input type="checkbox" data-id="'+id+'"'+(on?' checked':'')+'><span>'+x+'</span></label>'+(c.k==='cHifz'?' · '+tilawatLink(HIFZ[AGE][i].n,'Tilawat'):'')+'</li>'});h+='</ul>'});
  h+='<div class="card"><b>'+T.prog+'</b>: <span id="wn-pc">'+Math.round(done/tot*100)+'%</span><div class="bar"><i id="wn-bar" style="width:'+Math.round(done/tot*100)+'%"></i></div><p class="noprint"><button class="btn" onclick="window.print()">'+T.print+'</button> <button class="btn" id="wn-reset" style="background:#8a7a4a">'+T.reset+'</button></p></div>'}
  el.innerHTML=h;
  el.querySelectorAll('input[type=checkbox]').forEach(function(cb){cb.onchange=function(){var s=store('ck_'+AGE)||{};s[cb.dataset.id]=cb.checked;store('ck_'+AGE,s);var n=el.querySelectorAll('input:checked').length;var p=Math.round(n/tot*100);$('wn-pc').textContent=p+'%';$('wn-bar').style.width=p+'%'}});
  var rs=$('wn-reset');if(rs)rs.onclick=function(){store('ck_'+AGE,{});showRes()}}
 function renderHome(){var T=I[L];$('p-home').innerHTML='<h3>'+T.h1+'</h3><p>'+T.h2+'</p><h3>'+T.h3+'</h3><div class="grid"><div class="card"><div class="big">1</div>'+T.s1+'</div><div class="card"><div class="big">2</div>'+T.s2+'</div><div class="card"><div class="big">3</div>'+T.s3+'</div></div><p><button class="btn" id="wn-go">'+T.hb+'</button></p><div class="note">'+T.priv+'</div>';$('wn-go').onclick=function(){tab('child')}}
-function renderProg(){var T=I[L];$('p-prog').innerHTML='<h3>'+T.pg+'</h3><div class="grid"><div class="card"><b>'+T.pg1+'</b><br>'+T.pg1t+'</div><div class="card"><b>'+T.pg2+'</b><br>'+T.pg2t+'</div><div class="card"><b>'+T.pg3+'</b><br>'+T.pg3t+'</div><div class="card"><b>'+T.pg4+'</b><br>'+T.pg4t+'</div></div><h3>'+T.fmt+'</h3><div class="card"><ul><li>'+T.fmt1+'</li><li>'+T.fmt2+'</li><li>'+T.fmt3+'</li><li>'+T.fmt4+'</li></ul></div><h3>'+T.ij+'</h3><div class="card"><p>'+T.ij0+'</p><ol><li>'+T.ij1+'</li><li>'+T.ij2+'</li><li>'+T.ij3+'</li><li>'+T.ij4+'</li><li>'+T.ij5+'</li></ol></div>'}
-function renderJaiza(){var T=I[L];$('p-jaiza').innerHTML='<h3>'+T.jz+'</h3><p>'+T.jz0+'</p><div class="split"><span style="width:70%;background:#2f5d4a">70</span><span style="width:25%;background:#a8873a">25</span><span style="width:5%;background:#6b4f1d">5</span></div><div class="grid" style="margin-top:12px"><div class="card"><b>'+T.jzA+'</b> · 70<br>'+T.jzA0+'</div><div class="card"><b>'+T.jzB+'</b> · 25<br>'+T.jzB0+'</div><div class="card"><b>'+T.jzC+'</b> · 5<br>'+T.jzC0+'</div></div><h3>'+T.gr+'</h3><table><tr><td>'+T.g1+'</td><td>85–100</td></tr><tr><td>'+T.g2+'</td><td>70–84</td></tr><tr><td>'+T.g3+'</td><td>50–69</td></tr><tr><td>'+T.g4+'</td><td>&lt; 50</td></tr></table><div class="note">'+I[L].formtxt.replace(/^.*$/,I[L].formtxt)+'</div>'}
+var IJTEMA_SESSIONS=[
+ ['Sessione di apertura',[
+  ['10:00–10:30','Arrivo e registrazione','Ingresso'],
+  ['10:30','Tilawat · '+tilawatLink(3,'Āl-e-ʿImrān, vv. 36–38')+' · traduzione in urdu e in italiano','Sala principale'],
+  ['10:40','Nazm (poesia)','Sala principale'],
+  ['10:45','Benvenuto e istruzioni del Segretario Nazionale Waqf-e-Nau','Sala principale'],
+  ['10:50–12:30','Jaiza in gruppi e concorso artistico per chi attende','Sala principale'],
+  ['12:30–13:00','Quiz a tre livelli','Sala principale']]],
+ ['Pausa',[
+  ['13:00–14:00','Pranzo',''],['14:00–14:15','Preghiere Zuhr e ʿAsr','']]],
+ ['Sessione pomeridiana',[
+  ['14:15–14:35','Per tutti · «Gli algoritmi: che cosa ci mostrano i social e perché?» · Atta Ur Rafay Ekbal','Sala principale'],
+  ['14:35–15:00','Sotto i 13 anni · «Sei un dono per Allah: cosa vuol dire essere Waqf-e-Nau» · Murabbi Syed Aqeel Shah','Sala principale'],
+  ['14:35–15:00','Dai 13 anni · Incontro con Ataul Wasih Tariq, Muballigh Incharge Italia','Biblioteca'],
+  ['15:00–16:00','Sotto i 13 anni · Presentazioni e mostra del concorso artistico','Sala principale'],
+  ['15:00–16:00','Dai 13 anni · Presentazioni su «Messaggio di Pace» (Jaiza)','Biblioteca']]],
+ ['Sessione di chiusura',[
+  ['16:00','Tilawat · '+tilawatLink(3,'Āl-e-ʿImrān, vv. 103–105')+' · con traduzione','Sala principale'],
+  ['16:05','Premiazione','Sala principale'],
+  ['16:15–16:30','Discorso conclusivo e Duʿa','Sala principale']]]];
+function ijtemaSchedule(){
+ return '<div lang="it" dir="ltr"><p><strong>Domenica 22 novembre 2026</strong></p>'+IJTEMA_SESSIONS.map(function(section){
+  return '<h4>'+section[0]+'</h4><table><thead><tr><th scope="col">Orario</th><th scope="col">Programma</th><th scope="col">Luogo</th></tr></thead><tbody>'+section[1].map(function(row){
+   return '<tr><td>'+row[0]+'</td><td>'+row[1]+'</td><td>'+row[2]+'</td></tr>';
+  }).join('')+'</tbody></table>';
+ }).join('')+'<p>I genitori possono assistere a uno dei due programmi del pomeriggio.</p></div>';
+}
+function renderProg(){var T=I[L];$('p-prog').innerHTML='<h3>'+T.pg+'</h3><div class="grid"><div class="card"><b>'+T.pg1+'</b><br>'+T.pg1t+'</div><div class="card"><b>'+T.pg2+'</b><br>'+T.pg2t+'</div><div class="card"><b>'+T.pg3+'</b><br>'+T.pg3t+'</div><div class="card"><b>'+T.pg4+'</b><br>'+T.pg4t+'</div></div><h3>'+T.fmt+'</h3><div class="card"><ul><li>'+T.fmt1+'</li><li>'+T.fmt2+'</li><li>'+T.fmt3+'</li><li>'+T.fmt4+'</li></ul></div><h3>'+T.ij+'</h3><p>'+documentLink('https://ataulwasihtariq.github.io/waqfe-nau/materiali/programma-ijtema-2026.pdf',IJTEMA_PROGRAM[L])+'</p>'+ijtemaSchedule()}
+function renderJaiza(){var T=I[L];$('p-jaiza').innerHTML='<h3>'+T.jz+'</h3><p>'+T.jz0+'</p><p>'+documentLink(JAIZA_DIR+'moduli-per-eta.pdf',JAIZA_ALL[L],'it')+'</p><div class="split"><span style="width:70%;background:#2f5d4a">70</span><span style="width:25%;background:#a8873a">25</span><span style="width:5%;background:#6b4f1d">5</span></div><div class="grid" style="margin-top:12px"><div class="card"><b>'+T.jzA+'</b> · 70<br>'+T.jzA0+'</div><div class="card"><b>'+T.jzB+'</b> · 25<br>'+T.jzB0+'</div><div class="card"><b>'+T.jzC+'</b> · 5<br>'+T.jzC0+'</div></div><h3>'+T.gr+'</h3><table><tr><td>'+T.g1+'</td><td>85–100</td></tr><tr><td>'+T.g2+'</td><td>70–84</td></tr><tr><td>'+T.g3+'</td><td>50–69</td></tr><tr><td>'+T.g4+'</td><td>&lt; 50</td></tr></table><div class="note">'+T.formtxt+'</div>'}
 function renderQuiz(){var T=I[L],qq=Q[L],h='<h3>'+T.quiz+'</h3><p>'+T.quiz0+'</p><div id="wn-q"></div><h3>'+T.faq+'</h3>';
  FAQ[L].forEach(function(f){h+='<details><summary>'+f[0]+'</summary><p>'+f[1]+'</p></details>'});$('p-quiz').innerHTML=h;qi=0;qs=0;drawQ()}
 function drawQ(){var T=I[L],qq=Q[L],el=$('wn-q');if(qi>=qq.length){el.innerHTML='<div class="card"><div class="big">'+T.score+qs+' / '+qq.length+'</div><p><button class="btn" id="wn-qa">'+T.again+'</button></p></div>';$('wn-qa').onclick=function(){qi=0;qs=0;drawQ()};return}
- var q=qq[qi];el.innerHTML='<div class="card"><p><b>'+(qi+1)+'/'+qq.length+'</b> · '+q[0]+'</p>'+q[1].map(function(o,i){return '<button class="opt" data-i="'+i+'">'+o+'</button>'}).join('')+'<p id="wn-nx"></p></div>';
- el.querySelectorAll('.opt').forEach(function(b){b.onclick=function(){if(el.dataset.done==qi)return;el.dataset.done=qi;var ok=+b.dataset.i===q[2];if(ok)qs++;b.classList.add(ok?'ok':'no');if(!ok)el.querySelector('[data-i="'+q[2]+'"]').classList.add('ok');$('wn-nx').innerHTML='<button class="btn" id="wn-n">'+T.next+'</button>';$('wn-n').onclick=function(){qi++;drawQ()}}})}
+ var q=qq[qi],locked=false;
+ var reveal=t('Show answer','Mostra risposta','جواب دکھائیں');
+ var correct=t('Correct answer','Risposta corretta','درست جواب');
+ el.innerHTML='<div class="card"><p><b>'+(qi+1)+'/'+qq.length+'</b> · '+q[0]+'</p>'+q[1].map(function(o,i){return '<button class="opt" data-i="'+i+'">'+o+'</button>'}).join('')+'<p id="wn-answer" aria-live="polite"></p><p id="wn-nx"><button class="btn" id="wn-reveal">'+reveal[L]+'</button></p></div>';
+ var options=el.querySelectorAll('.opt');
+ function showAnswer(selected){
+  if(locked)return;
+  locked=true;
+  if(selected===q[2])qs++;
+  else if(selected!==null)options[selected].classList.add('no');
+  options[q[2]].classList.add('ok');
+  options.forEach(function(option){option.disabled=true});
+  $('wn-answer').textContent=correct[L]+' · '+q[1][q[2]];
+  $('wn-nx').innerHTML='<button class="btn" id="wn-n">'+T.next+'</button>';
+  $('wn-n').onclick=function(){qi++;drawQ()};
+  $('wn-n').focus();
+ }
+ options.forEach(function(button){button.onclick=function(){showAnswer(+button.dataset.i)}});
+ $('wn-reveal').onclick=function(){showAnswer(null)};
+}
 function renderTeach(){var T=I[L];$('p-teach').innerHTML='<h3>'+T.tc+'</h3><p>'+T.tc0+'</p><h3>'+T.r0+'</h3><div class="card"><ol><li>'+T.r1+'</li><li>'+T.r2+'</li><li>'+T.r3+'</li><li>'+T.r4+'</li></ol></div><h3>'+T.mk+'</h3><table><tr><td>'+T.m4+'</td></tr><tr><td>'+T.m3+'</td></tr><tr><td>'+T.m2+'</td></tr><tr><td>'+T.m1+'</td></tr><tr><td>'+T.m0+'</td></tr></table><h3>'+T.rl+'</h3><div class="card"><ul><li>'+T.rl1+'</li><li>'+T.rl2+'</li><li>'+T.rl3+'</li></ul></div>'}
 var IDS=['home','child','prog','jaiza','quiz','teach'];
 function tab(id){TAB=id;IDS.forEach(function(x){$('p-'+x).classList.toggle('on',x===id)});document.querySelectorAll('#wn-tabs button').forEach(function(b){b.classList.toggle('on',b.dataset.t===id)});if(id==='child')renderChild();root.scrollIntoView&&0}
