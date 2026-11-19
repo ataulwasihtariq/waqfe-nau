@@ -1,31 +1,42 @@
 <!-- Waqf-e-Nau Italia 2026 – self-contained block for WordPress (Custom HTML block). All styles are scoped to .wn -->
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600&family=Source+Sans+3:wght@400;600;700&display=swap');
-.wn{--g:#2f5d4a;--gold:#a8873a;--cream:#fbf8f1;--dark:#1e2b26;font-family:'Source Sans 3',system-ui,sans-serif;color:var(--dark);background:var(--cream);line-height:1.6;max-width:980px;margin:0 auto;padding:0 0 30px}
+.wn{--g:#153963;--gold:#d8b674;--cream:#f5f7fb;--dark:#172c44;font-family:'Source Sans 3',system-ui,sans-serif;color:var(--dark);background:var(--cream);line-height:1.6;max-width:980px;margin:0 auto;padding:0 0 30px}
 .wn *{box-sizing:border-box}
 .wn.ur{font-family:'Noto Nastaliq Urdu',serif;line-height:2.1}
-.wn .hd{background:var(--g);color:#fff;padding:26px 18px;text-align:center;border-radius:0 0 14px 14px}
-.wn .hd h2{margin:0 0 4px;font-size:1.7rem;color:#fff;border:0}
-.wn .hd p{margin:0;opacity:.92}
-.wn .cd{display:inline-block;margin-top:12px;background:var(--gold);padding:5px 16px;border-radius:20px;font-weight:700}
-.wn .lg{display:flex;justify-content:center;gap:8px;margin-top:14px}
-.wn button{font:inherit;cursor:pointer}
-.wn .lg button{border:1px solid #fff;background:transparent;color:#fff;padding:6px 16px;border-radius:20px}
-.wn .lg button.on{background:var(--gold);border-color:var(--gold)}
-.wn .tabs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:14px 8px;position:sticky;top:0;background:var(--cream);z-index:5;border-bottom:1px solid #e3dcc9}
-.wn .tabs button{border:1px solid var(--g);background:#fff;color:var(--g);padding:7px 14px;border-radius:8px}
-.wn .tabs button.on{background:var(--g);color:#fff}
+.wn .hd{background:#102c4c;color:#fff;padding:clamp(18px,4vw,42px);border-radius:0 0 20px 20px}
+.wn .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:24px;align-items:center}
+.wn .hero-brand{display:flex;align-items:center;gap:18px}
+.wn .logo{width:clamp(70px,12vw,110px);height:auto;flex:none;border-radius:50%;background:white}
+.wn .banner{width:100%;height:auto;display:block;border-radius:12px}
+.wn .hd h2{margin:0 0 4px;font-size:clamp(1.4rem,4vw,2.3rem);line-height:1.25;color:#fff;border:0}
+.wn .hd p{margin:0;color:#dce7f4}
+.wn .hero-tools{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:20px}
+.wn .cd{display:inline-block;background:var(--gold);color:#142b47;padding:5px 13px;border-radius:20px;font-weight:700}
+.wn .lg{display:flex;flex-wrap:wrap;gap:8px}
+.wn button{font:inherit;cursor:pointer;min-height:44px}
+.wn .lg button{border:1px solid #bdd0e6;background:transparent;color:#fff;padding:5px 14px;border-radius:20px}
+.wn .lg button.on{background:var(--gold);border-color:var(--gold);color:#142b47}
+.wn .tabs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:12px clamp(12px,3vw,24px);position:sticky;top:var(--wp-admin--admin-bar--height,0px);background:var(--cream);z-index:5;border-bottom:1px solid #d5dfec}
+.wn .tabs button{border:1px solid #a5b7cd;background:#fff;color:var(--g);padding:7px 14px;border-radius:8px}
+.wn .tabs button.on{background:var(--g);color:#fff;border-color:var(--g)}
+.wn :focus-visible{outline:3px solid #916112;outline-offset:3px}
+.wn .hd :focus-visible{outline-color:#f5d691}
+.wn .pane{scroll-margin-top:90px;overflow-wrap:anywhere}
+.wn .quick{display:flex;gap:8px;flex-wrap:wrap}
+.wn .quick .btn{margin:0}
+.wn .quick .btn.secondary{background:#fff;color:var(--g)!important;border:1px solid var(--g)}
 .wn .pane{display:none;padding:6px 18px}.wn .pane.on{display:block}
 .wn h3{color:var(--g);border-bottom:2px solid var(--gold);padding-bottom:3px;margin:26px 0 10px}
-.wn .card{background:#fff;border:1px solid #e3dcc9;border-radius:10px;padding:14px 16px;margin:10px 0}
+.wn .card{background:#fff;border:1px solid #d5dfec;border-radius:10px;padding:14px 16px;margin:10px 0}
 .wn .note{background:#fff;border-inline-start:4px solid var(--gold);padding:10px 14px;border-radius:6px;margin:12px 0}
-.wn .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.wn .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px}
 .wn .big{font-size:2rem;font-weight:700;color:var(--g);line-height:1.1}
-.wn input[type=date],.wn select{font:inherit;padding:8px 10px;border:1px solid #cdbf98;border-radius:8px;background:#fff}
+.wn input[type=date],.wn select{font:inherit;padding:8px 10px;border:1px solid #9bacc2;border-radius:8px;background:#fff}
 .wn .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .wn .or{color:#6b6b60}
 .wn ul.ck{list-style:none;padding:0;margin:6px 0}
-.wn ul.ck li{padding:6px 0;border-bottom:1px dashed #e3dcc9}
+.wn ul.ck li{padding:6px 0;border-bottom:1px dashed #d5dfec}
 .wn ul.ck label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
 .wn ul.ck input{margin-top:6px;transform:scale(1.25)}
 .wn .bar{height:12px;background:#e8e0c8;border-radius:8px;overflow:hidden}
@@ -33,24 +44,39 @@
 .wn .split{display:flex;height:34px;border-radius:8px;overflow:hidden;color:#fff;font-weight:700;text-align:center}
 .wn .split span{display:flex;align-items:center;justify-content:center}
 .wn table{border-collapse:collapse;width:100%}
-.wn th,.wn td{border:1px solid #e3dcc9;padding:7px 10px;text-align:start;background:#fff}
+.wn th,.wn td{border:1px solid #d5dfec;padding:7px 10px;text-align:start;background:#fff}
 .wn th{background:#efe6cf}
 .wn a{color:var(--g)}
-.wn .btn{display:inline-block;background:var(--g);color:#fff!important;text-decoration:none;padding:8px 16px;border-radius:8px;margin:4px 6px 4px 0}
-.wn .opt{display:block;width:100%;text-align:start;background:#fff;border:1px solid #cdbf98;border-radius:8px;padding:9px 12px;margin:6px 0;color:var(--dark)}
-.wn .opt.ok{background:#dcefe3;border-color:#2f5d4a}.wn .opt.no{background:#f6dcd6;border-color:#b3402a}
-.wn details{background:#fff;border:1px solid #e3dcc9;border-radius:8px;padding:8px 14px;margin:8px 0}
+.wn .btn{display:inline-flex;align-items:center;min-height:44px;border:1px solid transparent;background:var(--g);color:#fff!important;text-decoration:none;padding:8px 16px;border-radius:8px;margin:4px 6px 4px 0}
+.wn .opt{display:block;width:100%;text-align:start;background:#fff;border:1px solid #9bacc2;border-radius:8px;padding:9px 12px;margin:6px 0;color:var(--dark)}
+.wn .opt:disabled{cursor:default;opacity:1}.wn .opt.ok{background:#dcefe3;border-color:#267047}.wn .opt.no{background:#f6dcd6;border-color:#b3402a}
+.wn details{background:#fff;border:1px solid #d5dfec;border-radius:8px;padding:8px 14px;margin:8px 0}
 .wn summary{cursor:pointer;font-weight:600}
 .wn .tag{display:inline-block;background:#efe6cf;border-radius:12px;padding:1px 10px;font-size:.85rem;margin-inline-end:6px}
+@media(max-width:650px){
+ .wn .hero{grid-template-columns:1fr;gap:14px}
+ .wn .banner{max-height:170px;object-fit:cover}
+ .wn .tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));position:static}
+ .wn .tabs button{padding:5px;line-height:1.25;white-space:normal}
+ .wn .pane{padding-inline:12px;scroll-margin-top:12px}
+ .wn .row{display:grid;align-items:start}
+ .wn input[type=date],.wn select{min-height:44px;max-width:100%}
+ .wn th,.wn td{padding:6px;font-size:.94rem}
+ .wn .quick{display:grid}
+}
+@media(prefers-reduced-motion:reduce){.wn .bar i{transition:none}}
 @media print{.wn .tabs,.wn .lg,.wn .noprint{display:none!important}.wn .pane{display:block!important}}
 </style>
 <div class="wn" id="wn" lang="it">
 <div class="hd">
-<h2 data-i="title"></h2><p data-i="sub"></p>
-<div class="cd" id="wn-cd"></div>
-<div class="lg"><button data-l="it">Italiano</button><button data-l="en">English</button><button data-l="ur">اردو</button></div>
+<div class="hero">
+ <div class="hero-brand"><img class="logo" src="https://ataulwasihtariq.github.io/waqfe-nau/assets/branding/waqf-e-nau-italia-logo.webp" width="300" height="300" alt="Waqf-e-Nau"><div><h2 data-i="title">Waqf-e-Nau Italia</h2><p data-i="sub"></p></div></div>
+ <img class="banner" src="https://ataulwasihtariq.github.io/waqfe-nau/assets/branding/waqf-e-nau-italia-banner.webp" width="1600" height="562" alt="">
 </div>
-<div class="tabs" id="wn-tabs"></div>
+<div class="hero-tools"><div class="cd" id="wn-cd"></div>
+<div class="lg"><button type="button" lang="it" data-l="it">Italiano</button><button type="button" lang="en" data-l="en">English</button><button type="button" lang="ur" data-l="ur">اردو</button></div></div>
+</div>
+<nav class="tabs" id="wn-tabs"></nav>
 
 <section class="pane" id="p-home"></section>
 <section class="pane" id="p-child"></section>
@@ -228,9 +254,9 @@ function itemsFor(a){var c=[];
  if(QAS[a])c.push({k:'cQas',l:[tr(QAS[a])]});
  if(a>=13)c.push({k:'cOther',l:[tr(PRES)]});
  return c}
-function renderChild(){var T=I[L],h='<h3>'+T.age+'</h3><div class="card"><div class="row"><label>'+T.ageq+' <input type="date" id="wn-bd" min="1990-01-01" max="2026-12-31"></label><span class="or">'+T.ageor+'</span><select id="wn-sel"><option value="">–</option>';
+function renderChild(){var T=I[L],h='<h3>'+T.age+'</h3><div class="card"><div class="row"><label>'+T.ageq+' <input type="date" id="wn-bd" min="1990-01-01" max="2026-12-31"></label><span class="or">'+T.ageor+'</span><select id="wn-sel" aria-label="'+T.tabs[1]+'"><option value="">–</option>';
  for(var a=3;a<=22;a++)h+='<option value="'+a+'"'+(AGE===a?' selected':'')+'>'+(a===22?'21+':a)+'</option>';
- h+='</select></div><p class="or">'+T.ageref+'</p></div><div id="wn-res"></div>';
+ h+='</select></div><p class="or">'+T.ageref+'</p></div><div id="wn-res" aria-live="polite"></div>';
  h+='<h3>'+T.nis+'</h3><p>'+nisabLink(null,NISAB_LABEL[L])+'<a class="btn" href="'+LINKS.p1+'" target="_blank" rel="noopener">'+T.p1+'</a><a class="btn" href="'+LINKS.p2+'" target="_blank" rel="noopener">'+T.p2+'</a><a class="btn" href="'+LINKS.p3+'" target="_blank" rel="noopener">'+T.p3+'</a></p>';
  h+='<h3>'+T.tab+'</h3><table><tr><th>'+T.bd+'</th><th>'+T.fm+'</th></tr>'+ROWS.map(function(r){return '<tr><td>'+r[1]+'</td><td>'+r[0]+T.years+'</td></tr>'}).join('')+'</table>';
  $('p-child').innerHTML=h;
@@ -254,7 +280,7 @@ function showRes(){var T=I[L],el=$('wn-res');if(AGE===null){el.innerHTML='';retu
  el.innerHTML=h;
  el.querySelectorAll('input[type=checkbox]').forEach(function(cb){cb.onchange=function(){var s=store('ck_'+AGE)||{};s[cb.dataset.id]=cb.checked;store('ck_'+AGE,s);var n=el.querySelectorAll('input:checked').length;var p=Math.round(n/tot*100);$('wn-pc').textContent=p+'%';$('wn-bar').style.width=p+'%'}});
  var rs=$('wn-reset');if(rs)rs.onclick=function(){store('ck_'+AGE,{});showRes()}}
-function renderHome(){var T=I[L];$('p-home').innerHTML='<h3>'+T.h1+'</h3><p>'+T.h2+'</p><h3>'+T.h3+'</h3><div class="grid"><div class="card"><div class="big">1</div>'+T.s1+'</div><div class="card"><div class="big">2</div>'+T.s2+'</div><div class="card"><div class="big">3</div>'+T.s3+'</div></div><p><button class="btn" id="wn-go">'+T.hb+'</button></p><div class="note">'+T.priv+'</div>';$('wn-go').onclick=function(){tab('child')}}
+function renderHome(){var T=I[L];$('p-home').innerHTML='<h3>'+T.h1+'</h3><p>'+T.h2+'</p><h3>'+T.h3+'</h3><div class="grid"><div class="card"><div class="big">1</div>'+T.s1+'</div><div class="card"><div class="big">2</div>'+T.s2+'</div><div class="card"><div class="big">3</div>'+T.s3+'</div></div><div class="quick"><button class="btn" id="wn-go">'+T.hb+'</button><button class="btn secondary" id="wn-home-program">'+T.tabs[2]+'</button><button class="btn secondary" id="wn-home-quiz">'+T.tabs[4]+'</button></div><div class="note">'+T.priv+'</div>';$('wn-go').onclick=function(){tab('child',true)};$('wn-home-program').onclick=function(){tab('prog',true)};$('wn-home-quiz').onclick=function(){tab('quiz',true)}}
 var IJTEMA_SESSIONS=[
  ['Sessione di apertura',[
   ['10:00–10:30','Arrivo e registrazione','Ingresso'],
@@ -283,7 +309,7 @@ function ijtemaSchedule(){
  }).join('')+'<p>I genitori possono assistere a uno dei due programmi del pomeriggio.</p></div>';
 }
 function renderProg(){var T=I[L];$('p-prog').innerHTML='<h3>'+T.pg+'</h3><div class="grid"><div class="card"><b>'+T.pg1+'</b><br>'+T.pg1t+'</div><div class="card"><b>'+T.pg2+'</b><br>'+T.pg2t+'</div><div class="card"><b>'+T.pg3+'</b><br>'+T.pg3t+'</div><div class="card"><b>'+T.pg4+'</b><br>'+T.pg4t+'</div></div><h3>'+T.fmt+'</h3><div class="card"><ul><li>'+T.fmt1+'</li><li>'+T.fmt2+'</li><li>'+T.fmt3+'</li><li>'+T.fmt4+'</li></ul></div><h3>'+T.ij+'</h3><p>'+documentLink('https://ataulwasihtariq.github.io/waqfe-nau/materiali/programma-ijtema-2026.pdf',IJTEMA_PROGRAM[L])+'</p>'+ijtemaSchedule()}
-function renderJaiza(){var T=I[L];$('p-jaiza').innerHTML='<h3>'+T.jz+'</h3><p>'+T.jz0+'</p><p>'+documentLink(JAIZA_DIR+'moduli-per-eta.pdf',JAIZA_ALL[L],'it')+'</p><div class="split"><span style="width:70%;background:#2f5d4a">70</span><span style="width:25%;background:#a8873a">25</span><span style="width:5%;background:#6b4f1d">5</span></div><div class="grid" style="margin-top:12px"><div class="card"><b>'+T.jzA+'</b> · 70<br>'+T.jzA0+'</div><div class="card"><b>'+T.jzB+'</b> · 25<br>'+T.jzB0+'</div><div class="card"><b>'+T.jzC+'</b> · 5<br>'+T.jzC0+'</div></div><h3>'+T.gr+'</h3><table><tr><td>'+T.g1+'</td><td>85–100</td></tr><tr><td>'+T.g2+'</td><td>70–84</td></tr><tr><td>'+T.g3+'</td><td>50–69</td></tr><tr><td>'+T.g4+'</td><td>&lt; 50</td></tr></table><div class="note">'+T.formtxt+'</div>'}
+function renderJaiza(){var T=I[L];$('p-jaiza').innerHTML='<h3>'+T.jz+'</h3><p>'+T.jz0+'</p><p>'+documentLink(JAIZA_DIR+'moduli-per-eta.pdf',JAIZA_ALL[L],'it')+'</p><div class="split"><span style="width:70%;background:#153963">70</span><span style="width:25%;background:#d8b674">25</span><span style="width:5%;background:#71501e">5</span></div><div class="grid" style="margin-top:12px"><div class="card"><b>'+T.jzA+'</b> · 70<br>'+T.jzA0+'</div><div class="card"><b>'+T.jzB+'</b> · 25<br>'+T.jzB0+'</div><div class="card"><b>'+T.jzC+'</b> · 5<br>'+T.jzC0+'</div></div><h3>'+T.gr+'</h3><table><tr><td>'+T.g1+'</td><td>85–100</td></tr><tr><td>'+T.g2+'</td><td>70–84</td></tr><tr><td>'+T.g3+'</td><td>50–69</td></tr><tr><td>'+T.g4+'</td><td>&lt; 50</td></tr></table><div class="note">'+T.formtxt+'</div>'}
 function renderQuiz(){var T=I[L],qq=Q[L],h='<h3>'+T.quiz+'</h3><p>'+T.quiz0+'</p><div id="wn-q"></div><h3>'+T.faq+'</h3>';
  FAQ[L].forEach(function(f){h+='<details><summary>'+f[0]+'</summary><p>'+f[1]+'</p></details>'});$('p-quiz').innerHTML=h;qi=0;qs=0;drawQ()}
 function drawQ(){var T=I[L],qq=Q[L],el=$('wn-q');if(qi>=qq.length){el.innerHTML='<div class="card"><div class="big">'+T.score+qs+' / '+qq.length+'</div><p><button class="btn" id="wn-qa">'+T.again+'</button></p></div>';$('wn-qa').onclick=function(){qi=0;qs=0;drawQ()};return}
@@ -309,16 +335,35 @@ function drawQ(){var T=I[L],qq=Q[L],el=$('wn-q');if(qi>=qq.length){el.innerHTML=
 }
 function renderTeach(){var T=I[L];$('p-teach').innerHTML='<h3>'+T.tc+'</h3><p>'+T.tc0+'</p><h3>'+T.r0+'</h3><div class="card"><ol><li>'+T.r1+'</li><li>'+T.r2+'</li><li>'+T.r3+'</li><li>'+T.r4+'</li></ol></div><h3>'+T.mk+'</h3><table><tr><td>'+T.m4+'</td></tr><tr><td>'+T.m3+'</td></tr><tr><td>'+T.m2+'</td></tr><tr><td>'+T.m1+'</td></tr><tr><td>'+T.m0+'</td></tr></table><h3>'+T.rl+'</h3><div class="card"><ul><li>'+T.rl1+'</li><li>'+T.rl2+'</li><li>'+T.rl3+'</li></ul></div>'}
 var IDS=['home','child','prog','jaiza','quiz','teach'];
-function tab(id){TAB=id;IDS.forEach(function(x){$('p-'+x).classList.toggle('on',x===id)});document.querySelectorAll('#wn-tabs button').forEach(function(b){b.classList.toggle('on',b.dataset.t===id)});if(id==='child')renderChild();root.scrollIntoView&&0}
+function tab(id,moveFocus){
+ TAB=id;
+ IDS.forEach(function(x){$('p-'+x).classList.toggle('on',x===id)});
+ $('wn-tabs').querySelectorAll('button').forEach(function(button){
+  var active=button.dataset.t===id;
+  button.classList.toggle('on',active);
+  button.setAttribute('aria-pressed',String(active));
+ });
+ if(id==='child')renderChild();
+ if(moveFocus){
+  var heading=$('p-'+id).querySelector('h3');
+  heading.tabIndex=-1;
+  heading.focus({preventScroll:true});
+  heading.scrollIntoView({block:'nearest'});
+ }
+ try{history.replaceState(null,'','#'+L+(id==='home'?'':'/'+id))}catch(e){}
+}
 function cd(){var T=I[L],n=Math.ceil((IJTEMA-new Date(new Date().toDateString()))/864e5);$('wn-cd').textContent=n>0?T.cd0+n+T.cdd:n===0?T.cdt:T.cdp}
 function setL(l){L=l;root.className='wn'+(l==='ur'?' ur':'');root.lang=l;root.dir=l==='ur'?'rtl':'ltr';var T=I[l];
  root.querySelector('[data-i=title]').textContent=T.title;root.querySelector('[data-i=sub]').textContent=T.sub;
+ $('wn-tabs').setAttribute('aria-label',T.title);
  $('wn-tabs').innerHTML=IDS.map(function(x,i){return '<button data-t="'+x+'">'+T.tabs[i]+'</button>'}).join('');
- $('wn-tabs').querySelectorAll('button').forEach(function(b){b.onclick=function(){tab(b.dataset.t)}});
- root.querySelectorAll('.lg button').forEach(function(b){b.classList.toggle('on',b.dataset.l===l)});
- renderHome();renderProg();renderJaiza();renderQuiz();renderTeach();cd();tab(TAB);try{history.replaceState(null,'','#'+l)}catch(e){}}
+ $('wn-tabs').querySelectorAll('button').forEach(function(b){b.onclick=function(){tab(b.dataset.t,true)}});
+ root.querySelectorAll('.lg button').forEach(function(b){var current=b.dataset.l===l;b.classList.toggle('on',current);b.setAttribute('aria-pressed',String(current))});
+ renderHome();renderProg();renderJaiza();renderQuiz();renderTeach();cd();tab(TAB)}
 root.querySelectorAll('.lg button').forEach(function(b){b.onclick=function(){setL(b.dataset.l)}});
-var h=(location.hash||'').slice(1);AGE=store('age');
-setL(['it','en','ur'].indexOf(h)>-1?h:'it');
+var route=(location.hash||'').slice(1).split('/');
+if(IDS.includes(route[1]))TAB=route[1];
+AGE=store('age');
+setL(['it','en','ur'].includes(route[0])?route[0]:'it');
 })();
 </script>

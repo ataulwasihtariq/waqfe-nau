@@ -2,6 +2,7 @@
 Sito pubblico (italiano · English · اردو): programma 2026, Nisab per età con elenco da spuntare, Jaiza, quiz per i genitori, routine per gli insegnanti.
 
 - `index.html` – pagina completa (GitHub Pages)
+- `assets/branding/` – logo Waqf-e-Nau Italia e banner web
 - `wordpress/waqfe-nau-embed.html` – lo stesso contenuto come blocco per WordPress (vedi `WORDPRESS.md`)
 
 **Privacy:** questo repository non deve contenere nomi, telefoni o elenchi di bambini, né moduli compilati. Il progresso spuntato resta solo nel browser del genitore.
