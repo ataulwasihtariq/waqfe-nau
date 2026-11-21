@@ -2,7 +2,7 @@
 <html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Waqf-e-Nau Italia 2026 – Programma, Nisab, Jaiza</title>
 <meta name="description" content="Waqf-e-Nau Italia 2026: programma, Nisab per età, Jaiza, quiz. Italiano, English, اردو.">
-<style>body{margin:0;background:#f5f7fb}</style></head><body>
+<style>body{margin:0;background:#fbf8f1}</style></head><body>
 <!-- Waqf-e-Nau Italia 2026 – self-contained block for WordPress (Custom HTML block). All styles are scoped to .wn -->
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600&family=Source+Sans+3:wght@400;600;700&display=swap');
@@ -72,6 +72,7 @@
 @media(prefers-reduced-motion:reduce){.wn .bar i{transition:none}}
 @media print{.wn .tabs,.wn .lg,.wn .noprint{display:none!important}.wn .pane{display:block!important}}
 </style>
+<link rel="stylesheet" href="assets/theme-jamaat.css">
 <div class="wn" id="wn" lang="it">
 <div class="hd">
 <div class="hero">
@@ -335,7 +336,7 @@ function showRes(){var T=I[L],el=$('wn-res');if(AGE===null){el.innerHTML='';retu
  el.innerHTML=h;
  el.querySelectorAll('input[type=checkbox]').forEach(function(cb){cb.onchange=function(){var s=store('ck_'+AGE)||{};s[cb.dataset.id]=cb.checked;store('ck_'+AGE,s);var n=el.querySelectorAll('input:checked').length;var p=Math.round(n/tot*100);$('wn-pc').textContent=p+'%';$('wn-bar').style.width=p+'%'}});
  var rs=$('wn-reset');if(rs)rs.onclick=function(){store('ck_'+AGE,{});showRes()}}
-function renderHome(){var T=I[L];$('p-home').innerHTML='<h3>'+T.h1+'</h3><p>'+T.h2+'</p><h3>'+T.h3+'</h3><div class="grid"><div class="card"><div class="big">1</div>'+T.s1+'</div><div class="card"><div class="big">2</div>'+T.s2+'</div><div class="card"><div class="big">3</div>'+T.s3+'</div></div><div class="quick"><button class="btn" id="wn-go">'+T.hb+'</button><button class="btn secondary" id="wn-home-program">'+T.tabs[2]+'</button><button class="btn secondary" id="wn-home-quiz">'+T.tabs[4]+'</button></div><div class="note">'+T.priv+'</div>';$('wn-go').onclick=function(){tab('child',true)};$('wn-home-program').onclick=function(){tab('prog',true)};$('wn-home-quiz').onclick=function(){tab('quiz',true)}}
+function renderHome(){var T=I[L];$('p-home').innerHTML='<h3>'+T.h1+'</h3><p>'+T.h2+'</p><h3>'+T.h3+'</h3><div class="grid"><div class="card"><div class="big">1</div>'+T.s1+'</div><div class="card"><div class="big">2</div>'+T.s2+'</div><div class="card"><div class="big">3</div>'+T.s3+'</div></div><div class="quick"><button class="btn" id="wn-go">'+T.hb+'</button><button class="btn secondary" id="wn-home-program">'+T.tabs[2]+'</button><button class="btn secondary" id="wn-home-quiz">'+T.tabs[4]+'</button></div><div class="note">'+T.priv+'</div><p><a class="btn secondary" href="famiglia/" style="background:#fff;color:var(--g)!important;border:1px solid var(--g)">Area famiglia (codice e PIN)</a></p>';$('wn-go').onclick=function(){tab('child',true)};$('wn-home-program').onclick=function(){tab('prog',true)};$('wn-home-quiz').onclick=function(){tab('quiz',true)}}
 var IJTEMA_SESSIONS=[
  ['Sessione di apertura',[
   ['10:00–10:30','Arrivo e registrazione','Ingresso'],
@@ -421,7 +422,7 @@ function drawQ(focus){
  $('wn-reveal').onclick=function(){showAnswer(null)};
  if(focus)$('wn-question').focus();
 }
-function renderTeach(){var T=I[L];$('p-teach').innerHTML='<h3>'+T.tc+'</h3><p>'+T.tc0+'</p><h3>'+T.r0+'</h3><div class="card"><ol><li>'+T.r1+'</li><li>'+T.r2+'</li><li>'+T.r3+'</li><li>'+T.r4+'</li></ol></div><h3>'+T.mk+'</h3><table><tr><td>'+T.m4+'</td></tr><tr><td>'+T.m3+'</td></tr><tr><td>'+T.m2+'</td></tr><tr><td>'+T.m1+'</td></tr><tr><td>'+T.m0+'</td></tr></table><h3>'+T.rl+'</h3><div class="card"><ul><li>'+T.rl1+'</li><li>'+T.rl2+'</li><li>'+T.rl3+'</li></ul></div>'}
+function renderTeach(){var T=I[L];$('p-teach').innerHTML='<h3>'+T.tc+'</h3><p>'+T.tc0+'</p><h3>'+T.r0+'</h3><div class="card"><ol><li>'+T.r1+'</li><li>'+T.r2+'</li><li>'+T.r3+'</li><li>'+T.r4+'</li></ol></div><h3>'+T.mk+'</h3><table><tr><td>'+T.m4+'</td></tr><tr><td>'+T.m3+'</td></tr><tr><td>'+T.m2+'</td></tr><tr><td>'+T.m1+'</td></tr><tr><td>'+T.m0+'</td></tr></table><h3>Jaiza 2026</h3><div class="card"><a class="btn" href="jaiza/">Strumento Jaiza per gli insegnanti</a><p>Segna cosa sa il bambino, con punteggio automatico e invio al registro.</p></div><h3>'+T.rl+'</h3><div class="card"><ul><li>'+T.rl1+'</li><li>'+T.rl2+'</li><li>'+T.rl3+'</li></ul></div>'}
 var IDS=['home','child','prog','jaiza','quiz','teach'];
 function tab(id,moveFocus){
  TAB=id;

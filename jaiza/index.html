@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Jaiza 2026 – Strumento per gli insegnanti</title>
+<link rel="stylesheet" href="../assets/theme-jamaat.css">
+<style>
+body{margin:0;background:#fbf8f1;font-family:'Source Sans 3',system-ui,sans-serif;color:#2b2f2c;line-height:1.55}
+.w{max-width:860px;margin:0 auto;padding:0 16px 80px}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;color:#1e2b26;margin:0 0 8px}
+h1{font-size:2.1rem}h2{font-size:1.6rem;border-bottom:2px solid #a8873a;padding-bottom:3px;margin-top:26px}
+.hd{background:#1e2b26;color:#fbf8f1;padding:18px 16px;border-bottom:3px solid #a8873a}.hd h1{color:#fbf8f1;margin:0}.hd p{margin:2px 0 0;color:#d8c48f}
+button,select,input{font:inherit}
+button{min-height:46px;cursor:pointer}
+.btn{background:#2f5d4a;color:#fff;border:0;border-radius:2px;padding:8px 18px;font-weight:600}
+.btn.sec{background:#fff;color:#2f5d4a;border:1px solid #2f5d4a}
+.btn.warn{background:#7a5f22}
+.card{background:#fff;border:1px solid #e6dcc4;padding:14px 16px;margin:10px 0}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+input,select{padding:9px 10px;border:1px solid #9bacc2;border-radius:2px;background:#fff;min-height:44px;max-width:100%}
+nav.t{display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:0;background:#fbf8f1;padding:10px 0;z-index:5;border-bottom:1px solid #e6dcc4}
+nav.t button{flex:1;border:1px solid #e6dcc4;background:#fff;color:#1e2b26;border-radius:2px}
+nav.t button.on{background:#2f5d4a;color:#fff;border-color:#2f5d4a}
+.item{display:grid;grid-template-columns:1fr auto;gap:8px 12px;padding:10px 0;border-bottom:1px dashed #e6dcc4;align-items:center}
+.item .lab{font-weight:600}
+.item .lnk{font-size:.9rem}
+.st{display:flex;gap:4px}
+.st button{min-width:62px;border:1px solid #9bacc2;background:#fff;border-radius:2px;padding:4px 6px;font-size:.92rem}
+.st button.s0.on{background:#f6dcd6;border-color:#b3402a}
+.st button.s1.on{background:#f7ecc8;border-color:#a8873a}
+.st button.s2.on{background:#dcefe3;border-color:#267047}
+.score{position:sticky;bottom:0;background:#1e2b26;color:#fbf8f1;padding:10px 16px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;justify-content:space-between;z-index:6}
+.score b{font-size:1.25rem;color:#d8c48f}
+.opt{display:block;width:100%;text-align:start;background:#fff;border:1px solid #9bacc2;border-radius:2px;padding:9px 12px;margin:6px 0}
+.opt.ok{background:#dcefe3;border-color:#267047}.opt.no{background:#f6dcd6;border-color:#b3402a}
+.pill{display:inline-block;background:#f5f1e6;border-radius:12px;padding:1px 10px;font-size:.85rem}
+.msg{padding:8px 12px;margin:8px 0;border-inline-start:4px solid #a8873a;background:#fff}
+.ok-t{color:#267047}.err-t{color:#b3402a}
+.pane{display:none}.pane.on{display:block}
+a{color:#2f5d4a}
+</style></head><body>
+<div class="hd"><div class="w" style="padding:0 16px"><h1>Jaiza 2026</h1><p>Strumento per gli insegnanti · Waqf-e-Nau Italia</p></div></div>
+<div class="w">
+<nav class="t" id="tabs"><button data-p="who" class="on">Insegnante</button><button data-p="kid">Bambino</button><button data-p="ask">Domande</button><button data-p="sync">Invio</button></nav>
+
+<section class="pane on" id="p-who">
+ <h2>Chi sei</h2>
+ <div class="card">
+  <div class="row"><label>Il tuo nome <input id="teacher" autocomplete="name"></label>
+  <label>Codice insegnanti <input id="token" type="password" autocomplete="off" placeholder="dato dall'organizzatore"></label></div>
+  <p class="row"><button class="btn" id="saveWho">Salva</button><button class="btn sec" id="loadRoster">Carica elenco bambini</button></p>
+  <div id="whoMsg" aria-live="polite"></div>
+  <p class="pill">I nomi dei bambini restano nel foglio privato Google: questa pagina non li contiene.</p>
+ </div>
+</section>
+
+<section class="pane" id="p-kid">
+ <h2>Scegli il bambino</h2>
+ <div class="card"><div class="row">
+  <label>Gruppo <select id="grp"></select></label>
+  <label>Bambino <select id="kidSel"></select></label>
+  <span class="pill">oppure</span>
+  <label>Codice <input id="kidCode" size="8" placeholder="WN-01" style="text-transform:uppercase"></label>
+  <label>Età al 1° sett. 2026 <select id="kidAge"></select></label>
+  <button class="btn" id="openKid">Apri modulo</button></div></div>
+ <div id="form"></div>
+</section>
+
+<section class="pane" id="p-ask">
+ <h2>Domande con risposta</h2>
+ <p>Tocca una risposta: compare subito quella corretta. Per il Nisab dell'età (Corano, preghiere, hadith, qaseeda) apri «Tilawat» o il Nisab italiano dal modulo del bambino.</p>
+ <div class="row"><button class="btn sec" data-q="A">Livello A · 5–9 anni</button><button class="btn sec" data-q="B">Livello B · 10–13 anni</button><button class="btn sec" data-q="C">Livello C · dai 14 anni</button></div>
+ <div id="qbox"></div>
+</section>
+
+<section class="pane" id="p-sync">
+ <h2>Invio al foglio</h2>
+ <div class="card"><p>In attesa di invio: <b id="pend">0</b> <span id="apiState" class="pill"></span></p>
+ <p class="row"><button class="btn" id="sendAll">Invia ora</button><button class="btn sec" id="csv">Scarica CSV di sicurezza</button><button class="btn warn" id="clear">Svuota coda inviata</button></p>
+ <div id="syncMsg" aria-live="polite"></div></div>
+ <p>Se manca la rete, i dati restano sul telefono e si inviano più tardi. Il CSV serve solo come copia di sicurezza.</p>
+</section>
+</div>
+<div class="score" id="scorebar" hidden><span id="sbName"></span><span>A <b id="sA">0</b>/70 · B <b id="sB">0</b>/25 · C <b id="sC">0</b>/5 · Totale <b id="sT">0</b> · <span id="sG"></span></span><button class="btn" id="saveKid">Salva bambino</button></div>
+
+<script src="config.js"></script>
+<script src="../assets/wn-data.js"></script>
+<script>
+(function(){
+var D=WN_DATA, API=window.WN_API||'';
+var NISAB='../materiali/nisab-italiano.pdf';
+var PAGES={3:12,4:14,5:15,6:16,7:19,8:20,9:22,10:23,11:27,12:29,13:32,14:38,15:43,16:46,17:47,18:49,19:49,20:51,21:51};
+var CAT={cHifz:'Corano (Hifz)',cNamaz:'Namaz e preghiere',cHad:'Hadith e Nomi di Allah',cQas:'Qaseeda',cOther:'Presentazione «Messaggio di Pace»'};
+function $(i){return document.getElementById(i)}
+function ls(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem('jz_'+k)||'null');localStorage.setItem('jz_'+k,JSON.stringify(v))}catch(e){return null}}
+function it(o){return o&&o.it||''}
+/* Voci del Nisab per età: stessa logica del sito */
+function itemsFor(a){var out=[];
+ if(D.HIFZ[a])D.HIFZ[a].forEach(function(h,i){out.push({id:'a'+a+'-hifz-'+i,cat:'cHifz',label:it(h.s)+(h.v?' (versetti '+h.v+')':''),link:'https://tilaw.at/'+h.n+':1',lt:'Tilawat'})});
+ var nm=[];if(D.NAMAZ[a])D.NAMAZ[a].forEach(function(x){nm.push(it(x))});
+ if(a>=12){D.NAMAZ12.forEach(function(x){nm.push(it(x))});if(D.NAMAZX[a])nm.push(it(D.NAMAZX[a]))}
+ nm.forEach(function(l,i){out.push({id:'a'+a+'-namaz-'+i,cat:'cNamaz',label:l,link:NISAB+'#page='+(PAGES[a]||1),lt:'Nisab'})});
+ if(D.HAD[a])out.push({id:'a'+a+'-had',cat:'cHad',label:it(D.HAD[a]),link:NISAB+'#page='+(PAGES[a]||1),lt:'Nisab'});
+ if(D.QAS[a])out.push({id:'a'+a+'-qas',cat:'cQas',label:it(D.QAS[a]),link:NISAB+'#page='+(PAGES[a]||1),lt:'Nisab'});
+ if(a>=13)out.push({id:'a'+a+'-pres',cat:'cOther',label:it(D.PRES),pres:true});
+ return out}
+/* Ripasso: 5 voci a caso dalle età precedenti (spot-check) */
+function revisionFor(a,seed){var pool=[];for(var y=Math.max(3,a-4);y<a;y++)pool=pool.concat(itemsFor(y).filter(function(x){return !x.pres}));
+ var r=mulberry(seed),res=[];while(pool.length&&res.length<5){res.push(pool.splice(Math.floor(r()*pool.length),1)[0])}
+ return res.map(function(x){return {id:'r-'+x.id,cat:'rev',label:x.label,link:x.link,lt:x.lt}})}
+function mulberry(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function seedOf(s){var h=0;for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return h}
+
+/* Stato */
+var cur=null; /* {code,name,age,A:[],B:[],st:{id:0/1/2},conduct} */
+var queue=ls('queue')||[];
+function save(){ls('queue',queue);$('pend').textContent=queue.filter(function(q){return !q.sent}).length}
+function showApi(){$('apiState').textContent=API?'foglio collegato':'foglio NON collegato (solo copia sul telefono)'}
+
+/* Tabs */
+document.querySelectorAll('#tabs button').forEach(function(b){b.onclick=function(){document.querySelectorAll('#tabs button').forEach(function(x){x.classList.toggle('on',x===b)});document.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('on',p.id==='p-'+b.dataset.p)});$('scorebar').hidden=!(cur&&b.dataset.p==='kid')}});
+function goto(p){document.querySelector('#tabs button[data-p='+p+']').click()}
+
+/* Insegnante */
+$('teacher').value=ls('teacher')||'';$('token').value=ls('token')||'';
+$('saveWho').onclick=function(){ls('teacher',$('teacher').value.trim());ls('token',$('token').value.trim());$('whoMsg').innerHTML='<div class="msg ok-t">Salvato.</div>'};
+var roster=ls('roster')||[];
+$('loadRoster').onclick=function(){
+ $('saveWho').click();
+ if(!API){$('whoMsg').innerHTML='<div class="msg err-t">Il foglio non è ancora collegato. Inserisci codice e età a mano nella scheda «Bambino».</div>';return}
+ fetch(API+'?action=roster&token='+encodeURIComponent(ls('token'))).then(function(r){return r.json()}).then(function(j){
+  if(!j.ok)throw new Error(j.error);roster=j.kids;ls('roster',roster);fillRoster();$('whoMsg').innerHTML='<div class="msg ok-t">Elenco caricato: '+roster.length+' bambini.</div>'
+ }).catch(function(e){$('whoMsg').innerHTML='<div class="msg err-t">Non riesco a caricare: '+e.message+'</div>'})};
+function fillRoster(){var g={};roster.forEach(function(k){g[k.group]=1});
+ $('grp').innerHTML='<option value="">Tutti</option>'+Object.keys(g).map(function(x){return '<option>'+x+'</option>'}).join('');fillKids()}
+function fillKids(){var gr=$('grp').value;
+ $('kidSel').innerHTML='<option value="">–</option>'+roster.filter(function(k){return !gr||k.group===gr}).map(function(k){return '<option value="'+k.code+'" data-age="'+k.age+'">'+k.name+' · '+k.age+'</option>'}).join('')}
+$('grp').onchange=fillKids;
+$('kidSel').onchange=function(){var o=this.selectedOptions[0];if(!o||!o.value)return;$('kidCode').value=o.value;$('kidAge').value=o.dataset.age||''};
+$('kidAge').innerHTML='<option value="">–</option>'+Array.from({length:19},function(_,i){return '<option>'+(i+3)+'</option>'}).join('')+'<option value="22">21+</option>';
+if(roster.length)fillRoster();
+
+/* Modulo bambino */
+$('openKid').onclick=function(){
+ var code=$('kidCode').value.trim().toUpperCase(),age=+$('kidAge').value;
+ if(!code||!age){alert('Serve il codice e l\'età.');return}
+ var sel=roster.filter(function(k){return k.code===code})[0];
+ var prev=ls('kid_'+code);
+ var A=itemsFor(age>21?21:age),B=revisionFor(age>21?21:age,seedOf(code));
+ cur={code:code,name:sel?sel.name:code,age:age,A:A,B:B,st:prev?prev.st:{},conduct:prev?prev.conduct:5};
+ draw();$('scorebar').hidden=false;window.scrollTo(0,0)};
+var LAB=['Non ancora','In parte','Sa'];
+function row(x){var s=cur.st[x.id];
+ return '<div class="item"><div><div class="lab">'+x.label+'</div>'+(x.link?'<a class="lnk" target="_blank" rel="noopener" href="'+x.link+'">'+x.lt+'</a>':'')+'</div><div class="st" data-id="'+x.id+'">'+[0,1,2].map(function(v){return '<button class="s'+v+(s===v?' on':'')+'" data-v="'+v+'">'+LAB[v]+'</button>'}).join('')+'</div></div>'}
+function draw(){
+ var h='<h2>'+cur.name+' · '+(cur.age>21?'21+':cur.age+' anni')+' <span class="pill">'+cur.code+'</span></h2>';
+ if(!cur.A.length)h+='<div class="msg">Per questa età il programma dettagliato è nel Nisab ufficiale: usa solo ripasso e condotta.</div>';
+ var last='';cur.A.forEach(function(x){if(x.cat!==last){h+='<h3>A · '+CAT[x.cat]+'</h3>';last=x.cat}h+=row(x)});
+ h+='<h2>B · Ripasso (domande a sorpresa)</h2><p>Chiedi queste voci degli anni precedenti.</p>'+cur.B.map(row).join('');
+ h+='<h2>C · Pratica e condotta</h2><div class="card"><label>Punteggio 0–5 <input type="range" id="cond" min="0" max="5" step="1" value="'+cur.conduct+'"> <b id="condV">'+cur.conduct+'</b></label></div>';
+ $('form').innerHTML=h;
+ $('form').querySelectorAll('.st').forEach(function(d){d.onclick=function(e){var b=e.target.closest('button');if(!b)return;cur.st[d.dataset.id]=+b.dataset.v;d.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});calc()}});
+ $('cond').oninput=function(){cur.conduct=+this.value;$('condV').textContent=this.value;calc()};
+ $('sbName').textContent=cur.name;calc()}
+function frac(list){var n=list.length;if(!n)return null;var s=0;list.forEach(function(x){s+=(cur.st[x.id]||0)});return s/(2*n)}
+function calc(){
+ var pres=cur.A.filter(function(x){return x.pres}),nis=cur.A.filter(function(x){return !x.pres});
+ var fN=frac(nis),fP=frac(pres),a=0;
+ if(fN===null&&fP===null)a=0;else if(pres.length)a=(fN||0)*60+(fP||0)*10;else a=(fN||0)*70;
+ var bAsked=cur.B.filter(function(x){return cur.st[x.id]!==undefined}),b=bAsked.length?25*(frac(bAsked)):0;
+ var c=cur.conduct,t=Math.round(a+b+c);
+ cur.score={a:Math.round(a),b:Math.round(b),c:c};
+ $('sA').textContent=cur.score.a;$('sB').textContent=cur.score.b;$('sC').textContent=c;$('sT').textContent=t;
+ $('sG').textContent=t>=85?'Mumtaz':t>=70?'Molto buono':t>=50?'Buono':'Da esercitare ancora'}
+$('saveKid').onclick=function(){
+ ls('kid_'+cur.code,{st:cur.st,conduct:cur.conduct});
+ var items=cur.A.map(function(x){return {id:x.id,sec:'A',label:x.label,s:cur.st[x.id]||0}}).concat(cur.B.filter(function(x){return cur.st[x.id]!==undefined}).map(function(x){return {id:x.id,sec:'B',label:x.label,s:cur.st[x.id]}}));
+ queue.push({code:cur.code,teacher:ls('teacher')||'',items:items,score:cur.score,at:new Date().toISOString(),sent:false});
+ save();alert('Salvato sul telefono. Si invia al foglio da «Invio».');trySend()};
+
+/* Domande */
+var qi=0,qs=0,ql=null;
+document.querySelectorAll('[data-q]').forEach(function(b){b.onclick=function(){ql=b.dataset.q;qi=0;qs=0;drawQ()}});
+function drawQ(){var list=D.QUIZ[ql],box=$('qbox');
+ if(qi>=list.length){box.innerHTML='<div class="card"><h3>Punteggio: '+qs+' / '+list.length+'</h3><button class="btn" id="again">Ricomincia</button></div>';$('again').onclick=function(){qi=0;qs=0;drawQ()};return}
+ var q=list[qi];box.innerHTML='<div class="card"><p><b>'+(qi+1)+'/'+list.length+'</b> · '+q[0]+'</p>'+q[1].map(function(o,i){return '<button class="opt" data-i="'+i+'">'+o+'</button>'}).join('')+'<p id="ans" aria-live="polite"></p><p><button class="btn sec" id="show">Mostra la risposta</button></p></div>';
+ var opts=box.querySelectorAll('.opt'),done=false;
+ function fin(sel){if(done)return;done=true;if(sel===q[2])qs++;else if(sel!==null)opts[sel].classList.add('no');opts[q[2]].classList.add('ok');opts.forEach(function(o){o.disabled=true});$('ans').innerHTML='<b>Risposta:</b> '+q[1][q[2]];$('show').outerHTML='<button class="btn" id="nx">Avanti</button>';$('nx').onclick=function(){qi++;drawQ()}}
+ opts.forEach(function(o){o.onclick=function(){fin(+o.dataset.i)}});$('show').onclick=function(){fin(null)}}
+
+/* Invio */
+function trySend(){
+ var todo=queue.filter(function(q){return !q.sent});
+ if(!API){$('syncMsg').innerHTML='<div class="msg err-t">Foglio non collegato: scarica il CSV di sicurezza.</div>';return Promise.resolve()}
+ if(!todo.length){$('syncMsg').innerHTML='<div class="msg ok-t">Niente da inviare.</div>';return Promise.resolve()}
+ var p=Promise.resolve();todo.forEach(function(q){p=p.then(function(){return fetch(API,{method:'POST',body:JSON.stringify({token:ls('token'),teacher:q.teacher,code:q.code,items:q.items,score:q.score})}).then(function(r){return r.json()}).then(function(j){if(j.ok){q.sent=true;save()}else throw new Error(j.error)})})});
+ return p.then(function(){$('syncMsg').innerHTML='<div class="msg ok-t">Inviato.</div>'}).catch(function(e){$('syncMsg').innerHTML='<div class="msg err-t">Invio non riuscito ('+e.message+'). I dati restano sul telefono: riprova.</div>'}).then(save)}
+$('sendAll').onclick=trySend;
+$('clear').onclick=function(){queue=queue.filter(function(q){return !q.sent});save()};
+$('csv').onclick=function(){var L=['Data;Codice;Insegnante;Sezione;VoceID;Voce;Stato'];queue.forEach(function(q){q.items.forEach(function(i){L.push([q.at,q.code,q.teacher,i.sec,i.id,'"'+i.label.replace(/"/g,'""')+'"',i.s].join(';'))})});
+ var a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['﻿'+L.join('\n')],{type:'text/csv'}));a.download='jaiza-2026-'+Date.now()+'.csv';a.click()};
+window.addEventListener('online',trySend);
+save();showApi();
+})();
+</script></body></html>

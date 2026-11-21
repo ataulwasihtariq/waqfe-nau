@@ -1,0 +1,40 @@
+/* Tema comune "Jamaat Italia": verde, oro, crema – uguale al mockup di alislam.it.
+   Si applica sopra gli stili di .wn (sito Waqf-e-Nau) e alle pagine Jaiza/Famiglia. */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+
+.wn{--g:#2f5d4a;--gold:#a8873a;--cream:#fbf8f1;--dark:#1e2b26;--line:#e6dcc4;
+ font-family:'Source Sans 3',system-ui,sans-serif;color:#2b2f2c;background:var(--cream)}
+.wn.ur{font-family:'Noto Nastaliq Urdu',serif}
+.wn h2,.wn h3,.wn h4{font-family:'Cormorant Garamond',serif;font-weight:600}
+.wn.ur h2,.wn.ur h3,.wn.ur h4{font-family:'Noto Nastaliq Urdu',serif}
+.wn h3{color:var(--dark);border-bottom:2px solid var(--gold);font-size:1.7rem}
+.wn .hd{background:var(--dark);border-radius:0;border-bottom:3px solid var(--gold)}
+.wn .hd p{color:#efe9da}
+.wn .logo{background:#fff;border:2px solid var(--gold)}
+.wn .banner{border:1px solid var(--gold);border-radius:2px}
+.wn .cd{background:var(--gold);color:#fff}
+.wn .lg button{border-color:#d8c48f}
+.wn .lg button.on{background:#d8c48f;border-color:#d8c48f;color:var(--dark)}
+.wn .tabs{background:var(--cream);border-bottom:1px solid var(--line)}
+.wn .tabs button{border:1px solid var(--line);color:var(--dark);border-radius:2px}
+.wn .tabs button.on{background:var(--g);border-color:var(--g);color:#fbf8f1}
+.wn .card,.wn details,.wn th,.wn td{border-color:var(--line)}
+.wn .card{border-radius:2px}
+.wn .note{border-inline-start-color:var(--gold)}
+.wn .btn{border-radius:2px;background:var(--g)}
+.wn .quick .btn.secondary{border-color:var(--g)}
+.wn th{background:#f5f1e6}
+.wn .big{color:var(--g);font-family:'Cormorant Garamond',serif}
+.wn .tag{background:#f5f1e6}
+.wn .bar{background:#eadfc0}
+.wn .bar i{background:var(--g)}
+.wn ul.ck li{border-bottom-color:var(--line)}
+.wn :focus-visible{outline-color:#6f5620}
+/* barra 70/25/5: colori del tema */
+.wn .split span:nth-child(1){background:#2f5d4a!important}
+.wn .split span:nth-child(2){background:#a8873a!important}
+.wn .split span:nth-child(3){background:#1e2b26!important}
+
+/* Barra "Dipartimenti" coerente col sito: usata nelle pagine Jaiza/Famiglia */
+.jz-top{background:#1e2b26;color:#efe9da;font-size:14px;padding:9px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-family:'Source Sans 3',sans-serif}
+.jz-top a{color:#efe9da;text-decoration:none;margin-inline-start:16px}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Il percorso di mio figlio – Waqf-e-Nau Italia</title>
+<link rel="stylesheet" href="../assets/theme-jamaat.css">
+<style>
+body{margin:0;background:#fbf8f1;font-family:'Source Sans 3',system-ui,sans-serif;color:#2b2f2c;line-height:1.6;font-size:18px}
+.hd{background:#1e2b26;color:#fbf8f1;padding:18px 16px;border-bottom:3px solid #a8873a}
+.w{max-width:720px;margin:0 auto;padding:0 16px 40px}
+h1,h2{font-family:'Cormorant Garamond',serif;color:#1e2b26;margin:0 0 8px}h1{color:#fbf8f1;font-size:2rem}h2{font-size:1.6rem;margin-top:24px}
+.card{background:#fff;border:1px solid #e6dcc4;padding:14px 16px;margin:12px 0}
+input,button{font:inherit;min-height:48px;padding:8px 12px;border:1px solid #9bacc2;border-radius:2px}
+button{background:#2f5d4a;color:#fff;border:0;font-weight:600;cursor:pointer;padding:8px 22px}
+label{display:block;margin:8px 0}
+.it{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px dashed #e6dcc4}
+.dot{flex:none;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+.d2{background:#267047}.d1{background:#a8873a}.d0{background:#b3402a}
+.bar{height:14px;background:#eadfc0;border-radius:8px;overflow:hidden}.bar i{display:block;height:100%;background:#2f5d4a}
+.err{color:#b3402a}.big{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:#2f5d4a}
+</style></head><body>
+<div class="hd"><div class="w" style="padding:0 16px"><h1>Il percorso di vostro figlio</h1><div style="color:#d8c48f">Waqf-e-Nau Italia · Jaiza 2026</div></div></div>
+<div class="w">
+<div class="card" id="login">
+ <p>Inserite il <b>codice</b> e il <b>PIN</b> che vi ha dato l'insegnante.</p>
+ <label>Codice <input id="code" placeholder="WN-01" autocapitalize="characters" style="text-transform:uppercase"></label>
+ <label>PIN <input id="pin" inputmode="numeric" maxlength="6" type="password"></label>
+ <button id="go">Vedi</button><p id="msg" class="err" aria-live="polite"></p>
+</div>
+<div id="out"></div>
+<p style="font-size:.9rem;color:#5a5f5b">Qui vedete solo vostro figlio. Verde: lo sa. Giallo: lo sa in parte. Rosso: da imparare ancora. Ripassate 10 minuti al giorno.</p>
+</div>
+<script src="../jaiza/config.js"></script>
+<script>
+(function(){
+var API=window.WN_API||'',$=function(i){return document.getElementById(i)};
+var SEC={A:'Programma di quest\'anno',B:'Ripasso'},LAB=['Da imparare','In parte','Lo sa'],MARK=['✗','~','✓'];
+$('go').onclick=function(){
+ $('msg').textContent='';
+ if(!API){$('msg').textContent='Il servizio non è ancora attivo.';return}
+ fetch(API+'?action=child&code='+encodeURIComponent($('code').value.trim())+'&pin='+encodeURIComponent($('pin').value.trim())).then(function(r){return r.json()}).then(function(j){
+  if(!j.ok){$('msg').textContent='Codice o PIN non corretti.';return}
+  var h='<h2>'+j.first+'</h2>';
+  if(j.score)h+='<div class="card"><div class="big">'+j.score.total+' / 100</div><b>'+j.score.grade+'</b><div class="bar" style="margin-top:8px"><i style="width:'+j.score.total+'%"></i></div></div>';
+  ['A','B'].forEach(function(s){var L=j.items.filter(function(x){return x.sec===s});if(!L.length)return;
+   var known=L.filter(function(x){return x.s===2}).length;
+   h+='<h2>'+SEC[s]+' <small>('+known+'/'+L.length+')</small></h2><div class="card">'+L.map(function(x){return '<div class="it"><span class="dot d'+x.s+'" title="'+LAB[x.s]+'">'+MARK[x.s]+'</span><div>'+x.label+'<br><small>'+LAB[x.s]+'</small></div></div>'}).join('')+'</div>'});
+  if(!j.items.length)h+='<div class="card">Non ci sono ancora valutazioni.</div>';
+  $('out').innerHTML=h;$('login').hidden=true}).catch(function(){$('msg').textContent='Non riesco a collegarmi. Riprovate più tardi.'})};
+})();
+</script></body></html>
